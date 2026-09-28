@@ -6,7 +6,7 @@ on:
       - feature/bytespace-new
 
 permissions:
-  contents: read
+  contents: write
 
 jobs:
   format-export:
@@ -16,6 +16,8 @@ jobs:
     steps:
       - name: Checkout
         uses: actions/checkout@v6
+        with:
+          ref: feature/bytespace-new
 
       - name: Set up pnpm
         uses: pnpm/action-setup@v6.0.9
@@ -36,13 +38,15 @@ jobs:
       - name: Format source
         run: pnpm format
 
-      - name: Package formatted source
-        run: tar -czf phase4-formatted-source.tar.gz src tests docs
-
-      - name: Upload formatted source
-        uses: actions/upload-artifact@v7
-        with:
-          name: phase4-formatted-source
-          path: phase4-formatted-source.tar.gz
-          if-no-files-found: error
-          retention-days: 1
+      - name: Commit formatting
+        shell: bash
+        run: |
+          if git diff --quiet; then
+            echo "No formatting changes."
+            exit 0
+          fi
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add src tests docs
+          git commit -m "style: format phase 4 catalogue"
+          git push origin HEAD:feature/bytespace-new
