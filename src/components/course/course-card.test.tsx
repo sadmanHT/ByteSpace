@@ -32,4 +32,13 @@ describe("CourseCard", () => {
 
     expect(card ? within(card).getAllByRole("link") : []).toHaveLength(2);
   });
+
+  it("supports the observed Home treatment without forking card markup", () => {
+    const { container } = render(
+      <CourseCard course={courses[0]} levelTone="success" overflowTone="dark" />,
+    );
+
+    expect(container.querySelector(".bs-course-card__level--success")).not.toBeNull();
+    expect(container.querySelector(".bs-avatar-stack--dark")).not.toBeNull();
+  });
 });

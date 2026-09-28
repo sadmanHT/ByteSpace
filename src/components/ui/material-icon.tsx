@@ -9,7 +9,8 @@ export type MaterialIconName =
   | "search"
   | "shopping-bag"
   | "sort"
-  | "star"\n  | "star-outline";
+  | "star"
+  | "star-outline";
 
 type IconGeometry = {
   path: string;

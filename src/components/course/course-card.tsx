@@ -6,13 +6,20 @@ import { AvatarStack } from "@/components/ui/avatar-stack";
 import { MaterialIcon } from "@/components/ui/material-icon";
 import { Rating } from "@/components/ui/rating";
 import { formatCourseLevel, formatCoursePrice } from "@/lib/course-catalog";
+import { classNames } from "@/lib/class-names";
 import type { Course } from "@/types/course";
 
 export type CourseCardProps = {
   course: Course;
+  levelTone?: "neutral" | "success";
+  overflowTone?: "accent" | "dark";
 };
 
-export function CourseCard({ course }: CourseCardProps) {
+export function CourseCard({
+  course,
+  levelTone = "neutral",
+  overflowTone = "accent",
+}: CourseCardProps) {
   return (
     <article className="bs-course-card" data-course-id={course.id}>
       <div className="bs-course-card__media">
@@ -49,14 +56,19 @@ export function CourseCard({ course }: CourseCardProps) {
         </div>
 
         <div className="bs-course-card__facts">
-          <span className="bs-course-card__level">
+          <span
+            className={classNames(
+              "bs-course-card__level",
+              `bs-course-card__level--${levelTone}`,
+            )}
+          >
             <MaterialIcon height={20} name="level" width={20} />
             <span>{formatCourseLevel(course.level)}</span>
           </span>
           <AvatarStack
             avatars={course.learners}
             overflowLabel={`${course.learnerOverflow}+`}
-            overflowTone="accent"
+            overflowTone={overflowTone}
           />
         </div>
 

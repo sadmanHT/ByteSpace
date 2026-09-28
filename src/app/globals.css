@@ -4,7 +4,8 @@
 @import "tailwindcss";
 @import "../styles/tokens.css";
 @import "../styles/components.css";
-@import "../styles/shared-ui.css";\n@import "../styles/course-catalogue.css";\n@import "../styles/course.css";
+@import "../styles/shared-ui.css";
+@import "../styles/course.css";
 
 * {
   box-sizing: border-box;

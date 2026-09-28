@@ -19,7 +19,11 @@ export function AvatarStack({
   overflowTone = "dark",
 }: AvatarStackProps) {
   return (
-    <div aria-label="Learners" className="bs-avatar-stack" role="group">
+    <div
+      aria-label="Learners"
+      className={classNames("bs-avatar-stack", `bs-avatar-stack--${overflowTone}`)}
+      role="group"
+    >
       {avatars.map((avatar) => (
         <Image
           alt={avatar.alt}
@@ -31,13 +35,7 @@ export function AvatarStack({
         />
       ))}
       {overflowLabel ? (
-        <span
-          aria-label={`${overflowLabel} more learners`}
-          className={classNames(
-            "bs-avatar-stack__overflow",
-            `bs-avatar-stack__overflow--${overflowTone}`,
-          )}
-        >
+        <span aria-label={`${overflowLabel} more learners`} className="bs-avatar-stack__overflow">
           {overflowLabel}
         </span>
       ) : null}

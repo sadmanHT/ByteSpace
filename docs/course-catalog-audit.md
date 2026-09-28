@@ -18,7 +18,7 @@ The native Search screen uses the repeated `Course_Card_1` component. The refere
 - 1px inside Shuttle Gray 200 / `#CED0D3` stroke,
 - 16px internal outer inset.
 
-The Search card grid is approximately 1199px wide and uses three 373px cards with 40px horizontal and vertical gaps.
+The Search card grid is 1199px wide and uses three 373px cards with 40px horizontal and vertical gaps.
 
 ## Media
 
@@ -29,32 +29,32 @@ Reference media node `78:1908`:
 - Figma image scale mode `FILL`,
 - three metadata pills positioned over the lower-left of the image.
 
-The metadata row uses 12px gaps. Its pills are 26px high, 24px radius, translucent `#F6F6F6`, and 12px Satoshi Regular / 20px line height.
+The metadata row is 315 × 26 with 12px gaps. The pill text uses Satoshi Medium 12 / 20 and 12px horizontal padding; the translucent fill is `#F6F6F6` at 60% opacity.
 
 Reference values:
 
-- 17 Lessons,
-- 2 hours 16 mins,
-- 59 Comments.
+- `17 Lessons`,
+- `2 hours 16 mins`,
+- `59 Comments`.
 
 ## Typography and metadata
 
-Reference card copy:
+Reference Search card copy:
 
 - title: Poppins SemiBold 20 / 28, -1% letter spacing,
 - creator: Satoshi Regular 12 / 18,
 - creator name: Persian Blue 800 / `#003BE2`,
-- level: 12px Satoshi Medium,
-- price: Poppins SemiBold 20, Persian Blue 800,
-- billing label: Satoshi Regular 12,
-- rating value: Satoshi Regular 18,
+- level: Satoshi Medium 12 / 20,
+- price: Poppins SemiBold 20 / 28, Persian Blue 800,
+- billing label: Satoshi Regular 12 / 18,
+- rating value: Satoshi Regular 18 / 27,
 - rating icon: 24px outlined Material star.
 
-The Beginner badge is 97 × 32 with a 24px radius and Shuttle Gray 50 background.
+The Search-page Beginner badge is 97 × 32 with a 24px radius, Shuttle Gray 50 background, and Shuttle Gray 700 text. The reusable card also supports the green Home variant from the native component source without duplicating markup.
 
 ## Learners
 
-The repeated stack is 128 × 32 with four 32px circular Figma image fills and -8px stack spacing. The final 32px overflow circle is Electric Lime 400 with dark text and shows `26+`.
+The repeated stack is 128 × 32 with four 32px circular Figma image fills and -8px stack spacing. The Search overflow circle is Electric Lime 400 with dark text and shows `26+`. The Home component source also contains the dark overflow treatment.
 
 The four learner images are the exact localized Phase 3 assets and remain content-addressed by their native Figma hashes.
 
@@ -81,7 +81,7 @@ All six visible reference cards use the same creator and card metadata:
 - /lifetime,
 - 26+ learner overflow.
 
-The six canonical records are stored once. The Search design visually repeats them; the application data does not duplicate identical domain records.
+The Search canvas visibly repeats the same six records in three six-card groups. The application stores the six domain records once instead of manufacturing duplicate Course identities.
 
 ## Categories
 
@@ -97,10 +97,25 @@ The exact native Search category labels are:
 - Creative Marketing,
 - Cooking.
 
-The visible reference catalogue has Featured selected, so the six canonical cards are grounded as `featured`. No unshown category assignment is invented for them.
+The visible reference catalogue has Featured selected, so the six canonical cards are grounded as `featured`. No unshown category assignment is invented for them. The filter helper still accepts the full visible category vocabulary and is tested with explicit fixture overrides.
 
 ## Asset treatment
 
-Each course image is extracted from the native `.fig` raster bytes and converted to a 682 × 390 WebP derivative, matching the 341 × 195.145 Figma `FILL` crop at roughly 2× rendered resolution. Filenames preserve the Figma image hashes.
+Each course image is extracted from the native `.fig` raster bytes and converted to a 512 × 293 WebP derivative using the same centered `FILL` crop intent as the 341 × 195.145 media frame. Filenames preserve the Figma image hashes.
 
-This optimization changes delivery format/size only. It does not substitute the source imagery or change the crop intent.
+The derivatives are deliberately larger than the rendered card media at standard CSS pixel density while keeping the Phase 4 repository footprint small. Later performance QA can introduce responsive source sets if production measurements justify them.
+
+## Behaviour
+
+- query matching is case-insensitive,
+- category and level filters compose,
+- `Most relevant` preserves the source order unchanged,
+- alternate sorts are stable and operate on copied arrays,
+- pagination clamps boundaries,
+- filtering never mutates fixture data,
+- page state resets when query/category/level changes,
+- empty results have an explicit status/heading state.
+
+## Visual evidence
+
+The `/course-card-fixture` route isolates the standard Search treatment, the longest native title, the Home success/dark variant, and a 320px narrow container. Playwright captures the fixture and the catalogue at the 1440px reference viewport and also runs a 390px overflow/focus smoke test.

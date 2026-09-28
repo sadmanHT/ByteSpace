@@ -30,6 +30,14 @@ test("course catalogue matches the Figma card foundation and supports discovery"
   expect(Math.round(firstBox?.height ?? 0)).toBe(384);
   expect(Math.round((secondBox?.x ?? 0) - (firstBox?.x ?? 0))).toBe(413);
 
+  const firstMedia = cards.nth(0).locator(".bs-course-card__media");
+  const mediaBox = await firstMedia.boundingBox();
+  expect(Math.round(mediaBox?.width ?? 0)).toBe(341);
+  expect(Math.round(mediaBox?.height ?? 0)).toBe(195);
+
+  const metadataPills = cards.nth(0).locator(".bs-course-meta-pill");
+  await expect(metadataPills).toHaveCount(3);
+
   const search = page.getByRole("searchbox", { name: "Search course catalogue" });
   await search.fill("Mastering Money");
   await expect(cards).toHaveCount(1);
@@ -68,6 +76,24 @@ test("course catalogue matches the Figma card foundation and supports discovery"
   expect(failedResponses).toEqual([]);
 
   await testInfo.attach("course-catalogue-1440", {
+    body: await page.screenshot({ fullPage: true }),
+    contentType: "image/png",
+  });
+});
+
+test("course-card visual fixture covers long, variant, and narrow states", async ({
+  page,
+}, testInfo) => {
+  await page.setViewportSize({ width: 1440, height: 1000 });
+  await page.goto("/course-card-fixture");
+  await page.waitForLoadState("networkidle");
+
+  await expect(page.locator(".bs-course-card")).toHaveCount(4);
+  await expect(page.getByText("Balancing Productivity and Self-Care")).toBeVisible();
+  await expect(page.locator(".bs-course-card__level--success")).toHaveCount(1);
+  await expect(page.locator(".bs-avatar-stack--dark")).toHaveCount(1);
+
+  await testInfo.attach("course-card-states-1440", {
     body: await page.screenshot({ fullPage: true }),
     contentType: "image/png",
   });
