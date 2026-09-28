@@ -47,7 +47,7 @@ export default function DesignSystemPage() {
                 />
                 <div className="grid gap-1 p-4">
                   <p className="type-label-s">{name}</p>
-                  <p className="type-body-xs" style={{ color: "var(--bs-text-muted)" }}>
+                  <p className="type-body-xs" style={{ color: "var(--bs-text-secondary)" }}>
                     {value}
                   </p>
                 </div>
@@ -62,13 +62,13 @@ export default function DesignSystemPage() {
           </h2>
           <div className="grid gap-8">
             <div className="grid gap-3">
-              <p className="type-label-xs" style={{ color: "var(--bs-text-muted)" }}>
+              <p className="type-label-xs" style={{ color: "var(--bs-text-secondary)" }}>
                 Poppins SemiBold · Heading M · 44 / 120%
               </p>
               <p className="type-heading-m">Learn without limits.</p>
             </div>
             <div className="grid gap-3">
-              <p className="type-label-xs" style={{ color: "var(--bs-text-muted)" }}>
+              <p className="type-label-xs" style={{ color: "var(--bs-text-secondary)" }}>
                 Satoshi Regular · Body L · 18 / 160%
               </p>
               <p className="type-body-l max-w-3xl" style={{ color: "var(--bs-text-secondary)" }}>

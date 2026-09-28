@@ -91,7 +91,7 @@
 }
 
 .bs-field__control::placeholder {
-  color: var(--bs-text-muted);
+  color: var(--bs-text-secondary);
 }
 
 .bs-field__control:hover:not(:disabled) {
@@ -116,7 +116,7 @@
 }
 
 .bs-field__hint {
-  color: var(--bs-text-muted);
+  color: var(--bs-text-secondary);
 }
 
 .bs-field__error {

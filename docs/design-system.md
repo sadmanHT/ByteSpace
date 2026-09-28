@@ -38,6 +38,10 @@ The CSS custom properties in `src/styles/tokens.css` are the single source for t
 | Body XS        |          12px |        160% | Satoshi 400     |
 | Label L/M/S/XS | 18/16/14/12px |        120% | Satoshi 500     |
 
+## Accessibility use of neutrals
+
+The raw `#82868E` neutral remains part of the Figma-derived palette. Automated contrast testing measured it at approximately 3.65:1 on white, so it is not used for 12px helper, caption, or placeholder text where WCAG AA requires 4.5:1. Those small-text roles use `#4B4C53` through the `text-secondary` semantic token instead. This is a semantic usage constraint, not a replacement of the source palette.
+
 ## Primitive policy
 
 The foundation currently contains a constrained `Container`, `TwelveColumnGrid`, `Button`, `TextField`, and selectable `Chip`. These components are intentionally small. New variants should only be introduced after repeated Figma usage proves they are real design-system variants rather than page-specific exceptions.
@@ -46,7 +50,7 @@ All interactive primitives include keyboard focus treatment, disabled behavior w
 
 ## Font delivery
 
-Poppins 600 is loaded from Google Fonts and Satoshi 400/500 from Fontshare's official CSS endpoint. Both are exercised on the isolated `/design-system` route and checked by the browser smoke suite so a missing font face is not silently accepted.
+Poppins 600 is loaded from Google Fonts and Satoshi 400/500 from Fontshare's CSS endpoint. Both are exercised on the isolated `/design-system` route and checked by the browser smoke suite so a missing font face is not silently accepted.
 
 ## Asset inventory status
 
