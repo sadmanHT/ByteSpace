@@ -13,8 +13,6 @@ test("shared shell and reusable controls work at the Figma desktop reference", a
 
   await page.setViewportSize({ width: 1440, height: 1000 });
   await page.goto("/shared-ui");
-  await page.waitForLoadState("networkidle");
-
   const fixture = page.getByTestId("shared-ui-fixture");
   await expect(fixture).toBeVisible();
 
@@ -68,8 +66,6 @@ test("shared shell and reusable controls work at the Figma desktop reference", a
 test("shared shell does not overflow a narrow viewport", async ({ page }) => {
   await page.setViewportSize({ width: 390, height: 844 });
   await page.goto("/shared-ui");
-  await page.waitForLoadState("networkidle");
-
   const geometry = await page.evaluate(() => ({
     documentWidth: document.documentElement.scrollWidth,
     viewportWidth: window.innerWidth,
