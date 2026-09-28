@@ -9,7 +9,7 @@ describe("CourseCard", () => {
     const course = courses[0];
     const { container } = render(<CourseCard course={course} />);
 
-    const card = container.querySelector("[data-course-id]");
+    const card = container.querySelector<HTMLElement>("[data-course-id]");
     expect(card).not.toBeNull();
 
     expect(screen.getByRole("link", { name: "Learn Figma from Basic" })).toHaveAttribute(
