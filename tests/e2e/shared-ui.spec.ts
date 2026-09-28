@@ -5,11 +5,17 @@ test("shared shell and reusable controls work at the Figma desktop reference", a
   page,
 }, testInfo) => {
   const errors: string[] = [];
+  const failedResponses: string[] = [];
 
   page.on("console", (message) => {
     if (message.type() === "error") errors.push(message.text());
   });
   page.on("pageerror", (error) => errors.push(error.message));
+  page.on("response", (response) => {
+    if (response.status() >= 400) {
+      failedResponses.push(`${response.status()} ${response.url()}`);
+    }
+  });
 
   await page.setViewportSize({ width: 1440, height: 1000 });
   await page.goto("/shared-ui");
@@ -18,6 +24,17 @@ test("shared shell and reusable controls work at the Figma desktop reference", a
 
   const header = page.locator(".bs-site-header");
   await expect(header).toHaveCSS("height", "120px");
+
+  await page.keyboard.press("Tab");
+  await expect(page.getByRole("link", { name: "ByteSpace home" }).first()).toBeFocused();
+  await page.keyboard.press("Tab");
+  await expect(
+    page.getByRole("navigation", { name: "Primary" }).getByRole("link", { name: "Home" }),
+  ).toBeFocused();
+  await page.keyboard.press("Tab");
+  await expect(
+    page.getByRole("navigation", { name: "Primary" }).getByRole("link", { name: "Courses" }),
+  ).toBeFocused();
 
   const logo = page.locator(".bs-site-header__logo");
   const logoBox = await logo.boundingBox();
@@ -60,6 +77,7 @@ test("shared shell and reusable controls work at the Figma desktop reference", a
     .analyze();
   expect(accessibility.violations).toEqual([]);
   expect(errors).toEqual([]);
+  expect(failedResponses).toEqual([]);
 
   await testInfo.attach("shared-ui-1440", {
     body: await page.screenshot({ fullPage: true }),
