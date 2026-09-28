@@ -39,6 +39,13 @@
   --bs-neutral-950: #242528;
   --bs-white: #ffffff;
 
+  /* Repeated live-screen values outside the formal Style Guide palette. */
+  --bs-screen-logo-lime: #c1e338;
+  --bs-screen-footer-purple: #7f30f7;
+  --bs-screen-gray-300: #d1d1d1;
+  --bs-screen-gray-500: #b0b0b0;
+  --bs-screen-gray-700: #4f4f4f;
+
   /* Semantic aliases follow observed screen usage. */
   --bs-brand-primary: var(--bs-blue-800);
   --bs-brand-accent: var(--bs-lime-400);
