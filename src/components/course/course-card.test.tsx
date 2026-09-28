@@ -12,9 +12,10 @@ describe("CourseCard", () => {
     const card = container.querySelector("[data-course-id]");
     expect(card).not.toBeNull();
 
-    expect(
-      screen.getByRole("link", { name: "Learn Figma from Basic" }),
-    ).toHaveAttribute("href", "/courses/learn-figma-from-basic");
+    expect(screen.getByRole("link", { name: "Learn Figma from Basic" })).toHaveAttribute(
+      "href",
+      "/courses/learn-figma-from-basic",
+    );
     expect(screen.getByRole("link", { name: "purepearl studio" })).toHaveAttribute(
       "href",
       "/creators/purepearl-studio",

@@ -13,11 +13,7 @@ export type AvatarStackProps = {
   overflowTone?: "accent" | "dark";
 };
 
-export function AvatarStack({
-  avatars,
-  overflowLabel,
-  overflowTone = "dark",
-}: AvatarStackProps) {
+export function AvatarStack({ avatars, overflowLabel, overflowTone = "dark" }: AvatarStackProps) {
   return (
     <div
       aria-label="Learners"

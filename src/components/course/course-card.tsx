@@ -39,11 +39,7 @@ export function CourseCard({
 
       <div className="bs-course-card__content">
         <div className="bs-course-card__copy">
-          <Link
-            className="bs-course-card__title"
-            href={`/courses/${course.slug}`}
-            prefetch={false}
-          >
+          <Link className="bs-course-card__title" href={`/courses/${course.slug}`} prefetch={false}>
             {course.title}
           </Link>
 
@@ -57,10 +53,7 @@ export function CourseCard({
 
         <div className="bs-course-card__facts">
           <span
-            className={classNames(
-              "bs-course-card__level",
-              `bs-course-card__level--${levelTone}`,
-            )}
+            className={classNames("bs-course-card__level", `bs-course-card__level--${levelTone}`)}
           >
             <MaterialIcon height={20} name="level" width={20} />
             <span>{formatCourseLevel(course.level)}</span>

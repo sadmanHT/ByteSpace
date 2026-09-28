@@ -18,9 +18,7 @@ describe("course catalogue helpers", () => {
     const before = courses.map((course) => course.id);
     const result = filterCourses(courses, { query: "MONEY MANAGEMENT" });
 
-    expect(result.map((course) => course.title)).toEqual([
-      "Mastering Money Management",
-    ]);
+    expect(result.map((course) => course.title)).toEqual(["Mastering Money Management"]);
     expect(courses.map((course) => course.id)).toEqual(before);
   });
 
@@ -52,17 +50,13 @@ describe("course catalogue helpers", () => {
     const source = [courses[2], courses[0], courses[1]];
     const relevance = sortCourses(source, "relevance");
 
-    expect(relevance.map((course) => course.id)).toEqual(
-      source.map((course) => course.id),
-    );
+    expect(relevance.map((course) => course.id)).toEqual(source.map((course) => course.id));
     expect(relevance).not.toBe(source);
 
-    const equalRatings = source.map((course) =>
-      withOverrides(course, { rating: 4.5 }),
+    const equalRatings = source.map((course) => withOverrides(course, { rating: 4.5 }));
+    expect(sortCourses(equalRatings, "rating-desc").map((course) => course.id)).toEqual(
+      equalRatings.map((course) => course.id),
     );
-    expect(
-      sortCourses(equalRatings, "rating-desc").map((course) => course.id),
-    ).toEqual(equalRatings.map((course) => course.id));
   });
 
   it("clamps page boundaries and returns a stable empty result", () => {
@@ -81,9 +75,7 @@ describe("course catalogue helpers", () => {
   });
 
   it("rejects invalid page sizes and centralizes price formatting", () => {
-    expect(() => paginateCourses(courses, 1, 0)).toThrow(
-      "pageSize must be a positive integer",
-    );
+    expect(() => paginateCourses(courses, 1, 0)).toThrow("pageSize must be a positive integer");
     expect(formatCoursePrice(25)).toBe("$25");
   });
 });

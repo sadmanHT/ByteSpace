@@ -1,9 +1,4 @@
-import type {
-  Course,
-  CourseCategory,
-  CourseLevel,
-  CourseSort,
-} from "@/types/course";
+import type { Course, CourseCategory, CourseLevel, CourseSort } from "@/types/course";
 
 export type CourseFilters = Readonly<{
   query?: string;
@@ -43,10 +38,7 @@ export function filterCourses(
   });
 }
 
-export function sortCourses(
-  source: readonly Course[],
-  sort: CourseSort,
-): readonly Course[] {
+export function sortCourses(source: readonly Course[], sort: CourseSort): readonly Course[] {
   if (sort === "relevance") {
     return [...source];
   }
@@ -81,9 +73,7 @@ export function paginateCourses(
   const total = source.length;
   const pageCount = total === 0 ? 0 : Math.ceil(total / pageSize);
   const currentPage =
-    pageCount === 0
-      ? 1
-      : Math.min(Math.max(Math.trunc(requestedPage) || 1, 1), pageCount);
+    pageCount === 0 ? 1 : Math.min(Math.max(Math.trunc(requestedPage) || 1, 1), pageCount);
   const start = (currentPage - 1) * pageSize;
 
   return {

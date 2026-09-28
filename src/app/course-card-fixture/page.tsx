@@ -12,8 +12,8 @@ export default function CourseCardFixturePage() {
           </p>
           <h1 className="type-heading-m">Course card states</h1>
           <p className="type-body-m text-neutral-700">
-            Standard Search treatment, the longest native title, the Home success/dark variant,
-            and a narrow container are isolated here for regression review.
+            Standard Search treatment, the longest native title, the Home success/dark variant, and
+            a narrow container are isolated here for regression review.
           </p>
         </header>
 

@@ -41,9 +41,7 @@ test("course catalogue matches the Figma card foundation and supports discovery"
   const search = page.getByRole("searchbox", { name: "Search course catalogue" });
   await search.fill("Mastering Money");
   await expect(cards).toHaveCount(1);
-  await expect(
-    page.getByRole("link", { name: "Mastering Money Management" }),
-  ).toBeVisible();
+  await expect(page.getByRole("link", { name: "Mastering Money Management" })).toBeVisible();
 
   await search.clear();
   await expect(cards).toHaveCount(3);

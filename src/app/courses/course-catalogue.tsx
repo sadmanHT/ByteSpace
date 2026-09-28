@@ -6,17 +6,8 @@ import { CourseCard } from "@/components/course/course-card";
 import { Pagination } from "@/components/ui/pagination";
 import { SearchField } from "@/components/ui/search-field";
 import { courseCategories } from "@/data/courses";
-import {
-  filterCourses,
-  paginateCourses,
-  sortCourses,
-} from "@/lib/course-catalog";
-import type {
-  Course,
-  CourseCategory,
-  CourseLevel,
-  CourseSort,
-} from "@/types/course";
+import { filterCourses, paginateCourses, sortCourses } from "@/lib/course-catalog";
+import type { Course, CourseCategory, CourseLevel, CourseSort } from "@/types/course";
 
 const PAGE_SIZE = 3;
 
@@ -35,10 +26,7 @@ export function CourseCatalogue({ courses }: CourseCatalogueProps) {
     () => filterCourses(courses, { query, category, level }),
     [category, courses, level, query],
   );
-  const sortedCourses = useMemo(
-    () => sortCourses(filteredCourses, sort),
-    [filteredCourses, sort],
-  );
+  const sortedCourses = useMemo(() => sortCourses(filteredCourses, sort), [filteredCourses, sort]);
   const pagination = useMemo(
     () => paginateCourses(sortedCourses, page, PAGE_SIZE),
     [page, sortedCourses],

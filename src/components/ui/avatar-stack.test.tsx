@@ -31,9 +31,7 @@ describe("AvatarStack", () => {
 
     expect(container.firstChild).toHaveClass("bs-avatar-stack--accent");
 
-    rerender(
-      <AvatarStack avatars={[{ alt: "", src: "/learner.webp" }]} overflowLabel="26+" />,
-    );
+    rerender(<AvatarStack avatars={[{ alt: "", src: "/learner.webp" }]} overflowLabel="26+" />);
     expect(container.firstChild).toHaveClass("bs-avatar-stack--dark");
   });
 });

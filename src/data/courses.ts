@@ -1,8 +1,6 @@
 import type { Course, CourseCategory, LearnerAvatar } from "@/types/course";
 
-export const courseCategories: ReadonlyArray<
-  Readonly<{ id: CourseCategory; label: string }>
-> = [
+export const courseCategories: ReadonlyArray<Readonly<{ id: CourseCategory; label: string }>> = [
   { id: "featured", label: "Featured" },
   { id: "music", label: "Music" },
   { id: "drawing-painting", label: "Drawing & Painting" },
