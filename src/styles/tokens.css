@@ -1,0 +1,157 @@
+:root {
+  /* Raw palette observed in the ByteSpace Figma style guide. */
+  --bs-blue-500: #003be2;
+  --bs-lime-400: #d4fb20;
+  --bs-neutral-950: #242528;
+  --bs-neutral-800: #4b4c53;
+  --bs-neutral-600: #82868e;
+  --bs-neutral-300: #ced0d3;
+  --bs-neutral-200: #e5e6e8;
+  --bs-neutral-100: #f5f5f6;
+  --bs-white: #ffffff;
+
+  /* Semantic aliases. */
+  --bs-brand-primary: var(--bs-blue-500);
+  --bs-brand-accent: var(--bs-lime-400);
+  --bs-text-primary: var(--bs-neutral-950);
+  --bs-text-secondary: var(--bs-neutral-800);
+  --bs-text-muted: var(--bs-neutral-600);
+  --bs-surface-default: var(--bs-white);
+  --bs-surface-muted: var(--bs-neutral-100);
+  --bs-border-default: var(--bs-neutral-300);
+  --bs-border-subtle: var(--bs-neutral-200);
+
+  /* Typography. Fallbacks are intentional; the named faces load in the root layout. */
+  --bs-font-heading: "Poppins", Arial, Helvetica, sans-serif;
+  --bs-font-body: "Satoshi", Arial, Helvetica, sans-serif;
+
+  /* Repeated spacing observed in Figma. */
+  --bs-space-2: 0.5rem;
+  --bs-space-3: 0.75rem;
+  --bs-space-4: 1rem;
+  --bs-space-6: 1.5rem;
+  --bs-space-10: 2.5rem;
+
+  /* Repeated radii observed in Figma. */
+  --bs-radius-3: 0.75rem;
+  --bs-radius-4: 1rem;
+  --bs-radius-6: 1.5rem;
+  --bs-radius-pill: 9999px;
+
+  /* Desktop reference geometry: 1440px canvas, 120px margins, 12 columns, 40px gutters. */
+  --bs-content-max: 75rem;
+  --bs-grid-columns: 12;
+  --bs-grid-gutter: 2.5rem;
+}
+
+.type-heading-l,
+.type-heading-m,
+.type-heading-s,
+.type-heading-xs {
+  margin: 0;
+  color: var(--bs-text-primary);
+  font-family: var(--bs-font-heading);
+  font-weight: 600;
+  line-height: 1.2;
+}
+
+.type-heading-l {
+  font-size: 4.5rem;
+}
+
+.type-heading-m {
+  font-size: 2.75rem;
+}
+
+.type-heading-s {
+  font-size: 2.25rem;
+}
+
+.type-heading-xs {
+  font-size: 1.25rem;
+}
+
+.type-body-l,
+.type-body-m,
+.type-body-s,
+.type-body-xs,
+.type-label-l,
+.type-label-m,
+.type-label-s,
+.type-label-xs {
+  margin: 0;
+  font-family: var(--bs-font-body);
+}
+
+.type-body-l {
+  font-size: 1.125rem;
+  line-height: 1.6;
+}
+
+.type-body-m {
+  font-size: 1rem;
+  line-height: 1.6;
+}
+
+.type-body-s {
+  font-size: 0.875rem;
+  line-height: 1.6;
+}
+
+.type-body-xs {
+  font-size: 0.75rem;
+  line-height: 1.6;
+}
+
+.type-label-l,
+.type-label-m,
+.type-label-s,
+.type-label-xs {
+  font-weight: 500;
+  line-height: 1.2;
+}
+
+.type-label-l {
+  font-size: 1.125rem;
+}
+
+.type-label-m {
+  font-size: 1rem;
+}
+
+.type-label-s {
+  font-size: 0.875rem;
+}
+
+.type-label-xs {
+  font-size: 0.75rem;
+}
+
+.bs-container {
+  width: min(var(--bs-content-max), calc(100% - 3rem));
+  margin-inline: auto;
+}
+
+.bs-grid {
+  display: grid;
+  grid-template-columns: repeat(var(--bs-grid-columns), minmax(0, 1fr));
+  gap: var(--bs-grid-gutter);
+}
+
+@media (max-width: 767px) {
+  .type-heading-l {
+    font-size: 3rem;
+  }
+
+  .type-heading-m {
+    font-size: 2.25rem;
+  }
+
+  .bs-container {
+    width: min(var(--bs-content-max), calc(100% - 2rem));
+  }
+
+  .bs-grid {
+    gap: var(--bs-space-4);
+  }
+}

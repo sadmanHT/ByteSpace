@@ -30,7 +30,7 @@ https://www.figma.com/design/kfFdZSGAGn4TFvnKHK4qem/ByteSpace-New-Check-website-
 ## Prerequisites
 
 - Node.js 22
-- pnpm 12.6+
+- pnpm 12.7+
 
 The repository pins the package manager through the `packageManager` field in `package.json`.
 
@@ -40,19 +40,13 @@ The repository pins the package manager through the `packageManager` field in `p
 pnpm install --frozen-lockfile
 ```
 
-During the initial repository bootstrap only, before the lockfile is committed, use:
-
-```bash
-pnpm install --no-frozen-lockfile
-```
-
 ## Development
 
 ```bash
 pnpm dev
 ```
 
-Open http://localhost:3000.
+Open http://localhost:3000. The isolated Phase 2 visual foundation is available at http://localhost:3000/design-system.
 
 ## Quality commands
 
@@ -70,13 +64,14 @@ The complete quality gate must pass before a phase is considered finished.
 ## Testing strategy
 
 - **Vitest + React Testing Library**: unit and component behavior.
-- **Playwright**: route/runtime smoke tests.
+- **Playwright**: route/runtime smoke tests and design-system desktop geometry.
 - **axe-core + Playwright**: automated accessibility smoke checks.
 - **Production build**: verifies framework compilation and route generation.
+- **Playwright fixture capture**: records the design-system reference surface for visual review.
 
 ## Current phase
 
-Phase 1 establishes architecture, tooling, tests, CI, and a safe runtime scaffold. The temporary foundation page is intentionally not the final ByteSpace design; design-system implementation starts in Phase 2.
+Phase 2 establishes the Figma-derived design tokens, typography, layout primitives, accessible interaction primitives, and isolated visual fixture. Direct image/icon localization remains gated by the connected Figma Starter plan's MCP call limit; no substitute assets are being invented.
 
 ## Environment variables
 
