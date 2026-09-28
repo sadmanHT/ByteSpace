@@ -24,12 +24,16 @@ test("shared shell and reusable controls work at the Figma desktop reference", a
   expect(Math.round(logoBox?.x ?? 0)).toBe(122);
   expect(Math.round(logoBox?.y ?? 0)).toBe(35);
 
-  await page.getByRole("link", { name: "Courses" }).click();
+  const primaryNavigation = page.getByRole("navigation", { name: "Primary" });
+  await primaryNavigation.getByRole("link", { name: "Courses", exact: true }).click();
   await expect(page).toHaveURL(/\/courses$/);
   await expect(
     page.getByRole("heading", { name: "Course catalogue foundation route." }),
   ).toBeVisible();
-  await page.getByRole("link", { name: "Home" }).click();
+  await page
+    .getByRole("navigation", { name: "Primary" })
+    .getByRole("link", { name: "Home", exact: true })
+    .click();
   await expect(page).toHaveURL(/\/$/);
 
   await page.goto("/shared-ui");
