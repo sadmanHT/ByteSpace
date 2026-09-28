@@ -1,44 +1,77 @@
 :root {
-  /* Raw palette observed in the ByteSpace Figma style guide. */
-  --bs-blue-500: #003be2;
+  /* Persian Blue — exact Figma palette. */
+  --bs-blue-50: #e7f6ff;
+  --bs-blue-100: #d3eeff;
+  --bs-blue-200: #b0ddff;
+  --bs-blue-300: #81c5ff;
+  --bs-blue-400: #4f9dff;
+  --bs-blue-500: #2872ff;
+  --bs-blue-600: #0445ff;
+  --bs-blue-700: #0043ff;
+  --bs-blue-800: #003be2;
+  --bs-blue-900: #0b36a4;
+  --bs-blue-950: #071e5f;
+
+  /* Electric Lime — exact Figma palette. */
+  --bs-lime-50: #fdffe4;
+  --bs-lime-100: #faffc5;
+  --bs-lime-200: #f2ff92;
+  --bs-lime-300: #e4ff54;
   --bs-lime-400: #d4fb20;
+  --bs-lime-500: #cbfc01;
+  --bs-lime-600: #8cb400;
+  --bs-lime-700: #6a8902;
+  --bs-lime-800: #546b09;
+  --bs-lime-900: #465a0d;
+  --bs-lime-950: #243300;
+
+  /* Shuttle Gray — exact Figma palette. */
+  --bs-neutral-50: #f5f5f6;
+  --bs-neutral-100: #e5e6e8;
+  --bs-neutral-200: #ced0d3;
+  --bs-neutral-300: #abaeb5;
+  --bs-neutral-400: #82868e;
+  --bs-neutral-500: #666973;
+  --bs-neutral-600: #585a62;
+  --bs-neutral-700: #4b4c53;
+  --bs-neutral-800: #424348;
+  --bs-neutral-900: #3a3b3f;
   --bs-neutral-950: #242528;
-  --bs-neutral-800: #4b4c53;
-  --bs-neutral-600: #82868e;
-  --bs-neutral-300: #ced0d3;
-  --bs-neutral-200: #e5e6e8;
-  --bs-neutral-100: #f5f5f6;
   --bs-white: #ffffff;
 
-  /* Semantic aliases. */
-  --bs-brand-primary: var(--bs-blue-500);
+  /* Semantic aliases follow observed screen usage. */
+  --bs-brand-primary: var(--bs-blue-800);
   --bs-brand-accent: var(--bs-lime-400);
   --bs-text-primary: var(--bs-neutral-950);
-  --bs-text-secondary: var(--bs-neutral-800);
-  --bs-text-muted: var(--bs-neutral-600);
+  --bs-text-secondary: var(--bs-neutral-700);
+  --bs-text-muted: var(--bs-neutral-400);
   --bs-surface-default: var(--bs-white);
-  --bs-surface-muted: var(--bs-neutral-100);
-  --bs-border-default: var(--bs-neutral-300);
-  --bs-border-subtle: var(--bs-neutral-200);
+  --bs-surface-muted: var(--bs-neutral-50);
+  --bs-border-default: var(--bs-neutral-200);
+  --bs-border-subtle: var(--bs-neutral-100);
 
-  /* Typography. Fallbacks are intentional; the named faces load in the root layout. */
+  /* Type families observed in the exported design. */
   --bs-font-heading: "Poppins", Arial, Helvetica, sans-serif;
   --bs-font-body: "Satoshi", Arial, Helvetica, sans-serif;
+  --bs-font-display: "Clash Display", "Poppins", Arial, Helvetica, sans-serif;
 
-  /* Repeated spacing observed in Figma. */
+  /* Repeated Figma spacing, including compact control spacing. */
+  --bs-space-1: 0.25rem;
+  --bs-space-1-5: 0.375rem;
   --bs-space-2: 0.5rem;
   --bs-space-3: 0.75rem;
   --bs-space-4: 1rem;
   --bs-space-6: 1.5rem;
   --bs-space-10: 2.5rem;
 
-  /* Repeated radii observed in Figma. */
+  /* Repeated Figma radii. */
   --bs-radius-3: 0.75rem;
   --bs-radius-4: 1rem;
   --bs-radius-6: 1.5rem;
+  --bs-radius-10: 2.5rem;
   --bs-radius-pill: 9999px;
 
-  /* Desktop reference geometry: 1440px canvas, 120px margins, 12 columns, 40px gutters. */
+  /* 1440px reference: 120px margins, 12 columns, 40px gutters. */
   --bs-content-max: 75rem;
   --bs-grid-columns: 12;
   --bs-grid-gutter: 2.5rem;
@@ -53,6 +86,7 @@
   font-family: var(--bs-font-heading);
   font-weight: 600;
   line-height: 1.2;
+  letter-spacing: -0.01em;
 }
 
 .type-heading-l {
@@ -75,12 +109,20 @@
 .type-body-m,
 .type-body-s,
 .type-body-xs,
+.type-label-xl,
 .type-label-l,
 .type-label-m,
 .type-label-s,
 .type-label-xs {
   margin: 0;
   font-family: var(--bs-font-body);
+}
+
+.type-body-l,
+.type-body-m,
+.type-body-s,
+.type-body-xs {
+  font-weight: 400;
 }
 
 .type-body-l {
@@ -103,12 +145,17 @@
   line-height: 1.6;
 }
 
+.type-label-xl,
 .type-label-l,
 .type-label-m,
 .type-label-s,
 .type-label-xs {
   font-weight: 500;
   line-height: 1.2;
+}
+
+.type-label-xl {
+  font-size: 1.25rem;
 }
 
 .type-label-l {
