@@ -20,7 +20,7 @@ test("home route renders and client interaction works", async ({ page }) => {
   const interactionButton = page.getByRole("button", { name: "Run interaction check" });
   await interactionButton.focus();
   await expect(interactionButton).toBeFocused();
-  await page.keyboard.press("Enter");
+  await interactionButton.press("Enter");
 
   await expect(page.getByRole("status")).toHaveText("Client-side interaction is working.");
   expect(errors).toEqual([]);
