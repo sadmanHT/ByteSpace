@@ -32,18 +32,14 @@ For that reason:
 
 ## Verified asset inventory
 
-| Local file | Figma node/source | Type | Usage routes | Native dimensions | Optimization | Alt-text role | Status |
-| ---------- | ----------------- | ---- | ------------ | ----------------- | ------------ | ------------- | ------ |
-| —          | —                 | —    | —            | —                 | —            | —             | Exact Figma export pending MCP access |
+No image, logo, icon, or illustration is marked as verified yet. Exact Figma export is pending renewed MCP access; this section must remain empty rather than contain guessed asset metadata.
 
 ## Font dependencies
 
-Typography is separately verified by the browser suite:
+Typography is separately verified by the browser suite.
 
-| Family | Weight | Delivery | Usage | Verification |
-| ------ | ------ | -------- | ----- | ------------ |
-| Poppins | 600 | Google Fonts CSS | Primary headings | Playwright font-load assertion |
-| Satoshi | 400, 500 | Fontshare CSS | Body copy and labels | Playwright font-load assertion |
+- **Poppins 600** — delivered through Google Fonts CSS, used for primary headings, and checked by a Playwright font-load assertion.
+- **Satoshi 400/500** — delivered through Fontshare CSS, used for body copy and labels, and checked by a Playwright font-load assertion.
 
 Font delivery is not treated as a substitute for the image/icon inventory above.
 
