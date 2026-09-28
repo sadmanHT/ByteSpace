@@ -32,7 +32,7 @@ function FooterLinkList({ items }: { items: ReadonlyArray<readonly [string, stri
     <ul className="bs-footer__link-list">
       {items.map(([label, href]) => (
         <li key={label}>
-          <Link className="bs-footer__link" href={href}>
+          <Link className="bs-footer__link" href={href} prefetch={false}>
             {label}
           </Link>
         </li>
@@ -84,13 +84,19 @@ export function SiteFooter() {
           <nav aria-label="Legal">
             <ul className="bs-footer__legal-links">
               <li>
-                <Link href="/privacy">Privacy Policy</Link>
+                <Link href="/privacy" prefetch={false}>
+                  Privacy Policy
+                </Link>
               </li>
               <li>
-                <Link href="/terms">Terms of Service</Link>
+                <Link href="/terms" prefetch={false}>
+                  Terms of Service
+                </Link>
               </li>
               <li>
-                <Link href="/cookies">Cookies Settings</Link>
+                <Link href="/cookies" prefetch={false}>
+                  Cookies Settings
+                </Link>
               </li>
             </ul>
           </nav>
