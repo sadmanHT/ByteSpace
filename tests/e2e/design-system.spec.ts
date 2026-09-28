@@ -48,3 +48,22 @@ test("design-system fixture matches the documented desktop foundation", async ({
     contentType: "image/png",
   });
 });
+
+test("design-system foundation does not overflow a narrow viewport", async ({ page }) => {
+  await page.setViewportSize({ width: 390, height: 844 });
+  await page.goto("/design-system");
+  await page.waitForLoadState("networkidle");
+
+  await expect(page.getByTestId("design-system-fixture")).toBeVisible();
+
+  const viewportGeometry = await page.evaluate(() => ({
+    viewportWidth: window.innerWidth,
+    documentWidth: document.documentElement.scrollWidth,
+  }));
+
+  expect(viewportGeometry.documentWidth).toBeLessThanOrEqual(viewportGeometry.viewportWidth);
+
+  const primaryAction = page.getByRole("button", { name: "Primary action" });
+  await primaryAction.focus();
+  await expect(primaryAction).toBeFocused();
+});
