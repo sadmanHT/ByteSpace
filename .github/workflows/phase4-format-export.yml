@@ -1,0 +1,48 @@
+name: Phase 4 Format Export
+
+on:
+  push:
+    branches:
+      - feature/bytespace-new
+
+permissions:
+  contents: read
+
+jobs:
+  format-export:
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v6
+
+      - name: Set up pnpm
+        uses: pnpm/action-setup@v6.0.9
+        with:
+          version: 12.7.0
+          run_install: false
+
+      - name: Set up Node.js
+        uses: actions/setup-node@v7
+        with:
+          node-version: 22
+          cache: pnpm
+          cache-dependency-path: pnpm-lock.yaml
+
+      - name: Install dependencies
+        run: pnpm install --frozen-lockfile
+
+      - name: Format source
+        run: pnpm format
+
+      - name: Package formatted source
+        run: tar -czf phase4-formatted-source.tar.gz src tests docs
+
+      - name: Upload formatted source
+        uses: actions/upload-artifact@v7
+        with:
+          name: phase4-formatted-source
+          path: phase4-formatted-source.tar.gz
+          if-no-files-found: error
+          retention-days: 1
