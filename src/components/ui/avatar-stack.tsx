@@ -1,5 +1,7 @@
 import Image from "next/image";
 
+import { classNames } from "@/lib/class-names";
+
 export type AvatarItem = {
   alt: string;
   src: string;
@@ -8,11 +10,20 @@ export type AvatarItem = {
 export type AvatarStackProps = {
   avatars: readonly AvatarItem[];
   overflowLabel?: string;
+  overflowTone?: "accent" | "dark";
 };
 
-export function AvatarStack({ avatars, overflowLabel }: AvatarStackProps) {
+export function AvatarStack({
+  avatars,
+  overflowLabel,
+  overflowTone = "dark",
+}: AvatarStackProps) {
   return (
-    <div aria-label="Learners" className="bs-avatar-stack" role="group">
+    <div
+      aria-label="Learners"
+      className={classNames("bs-avatar-stack", `bs-avatar-stack--${overflowTone}`)}
+      role="group"
+    >
       {avatars.map((avatar) => (
         <Image
           alt={avatar.alt}
@@ -24,7 +35,10 @@ export function AvatarStack({ avatars, overflowLabel }: AvatarStackProps) {
         />
       ))}
       {overflowLabel ? (
-        <span aria-label={`${overflowLabel} more learners`} className="bs-avatar-stack__overflow">
+        <span
+          aria-label={`${overflowLabel} more learners`}
+          className="bs-avatar-stack__overflow"
+        >
           {overflowLabel}
         </span>
       ) : null}

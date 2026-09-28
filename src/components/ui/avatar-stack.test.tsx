@@ -19,4 +19,21 @@ describe("AvatarStack", () => {
     expect(screen.getByAltText("Jordan Lee")).toBeInTheDocument();
     expect(screen.getByLabelText("26+ more learners")).toBeInTheDocument();
   });
+
+  it("supports the Figma lime overflow treatment without changing the default", () => {
+    const { container, rerender } = render(
+      <AvatarStack
+        avatars={[{ alt: "", src: "/learner.webp" }]}
+        overflowLabel="26+"
+        overflowTone="accent"
+      />,
+    );
+
+    expect(container.firstChild).toHaveClass("bs-avatar-stack--accent");
+
+    rerender(
+      <AvatarStack avatars={[{ alt: "", src: "/learner.webp" }]} overflowLabel="26+" />,
+    );
+    expect(container.firstChild).toHaveClass("bs-avatar-stack--dark");
+  });
 });

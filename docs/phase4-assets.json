@@ -1,0 +1,50 @@
+{
+  "sourceFile": "ByteSpace New Check website (Copy).fig",
+  "sourceSha256": "a5c21e6873e4a024db448e30ad30703edc797a49bf4e1da4eaa2cc2dc8a97089",
+  "cropMode": "center/FILL",
+  "optimizedDimensions": [682, 390],
+  "assets": [
+    {
+      "title": "Learn Figma from Basic",
+      "node": "78:1908",
+      "figmaHash": "93ad9f9e6bdb3c7f3c478820624ee19ad7320072",
+      "nativeDimensions": [698, 465],
+      "output": "/assets/courses/93ad9f9e6bdb3c7f3c478820624ee19ad7320072.webp"
+    },
+    {
+      "title": "Build Digital Asset",
+      "node": "78:1939",
+      "figmaHash": "c88264191d691ba3300ad4f82a942429bb912fa5",
+      "nativeDimensions": [682, 454],
+      "output": "/assets/courses/c88264191d691ba3300ad4f82a942429bb912fa5.webp"
+    },
+    {
+      "title": "the Power of Big Data",
+      "node": "78:1970",
+      "figmaHash": "4f3bdea5688b1a654db7a29b0bc5dd3563059d11",
+      "nativeDimensions": [682, 454],
+      "output": "/assets/courses/4f3bdea5688b1a654db7a29b0bc5dd3563059d11.webp"
+    },
+    {
+      "title": "Balancing Productivity and Self-Care",
+      "node": "78:2001",
+      "figmaHash": "72e18d90fb9ddac1944e3483a501f3cdae505f57",
+      "nativeDimensions": [682, 454],
+      "output": "/assets/courses/72e18d90fb9ddac1944e3483a501f3cdae505f57.webp"
+    },
+    {
+      "title": "Mastering Money Management",
+      "node": "78:2032",
+      "figmaHash": "a89789455304dbf5cadc8e011bc26c97145aa56c",
+      "nativeDimensions": [682, 454],
+      "output": "/assets/courses/a89789455304dbf5cadc8e011bc26c97145aa56c.webp"
+    },
+    {
+      "title": "From Idea to Startup Success",
+      "node": "78:2063",
+      "figmaHash": "69362b026219ac3eb8b4e77e8bbe4e18c4464b44",
+      "nativeDimensions": [682, 454],
+      "output": "/assets/courses/69362b026219ac3eb8b4e77e8bbe4e18c4464b44.webp"
+    }
+  ]
+}
