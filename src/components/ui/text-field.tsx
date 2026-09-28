@@ -11,21 +11,12 @@ export type TextFieldProps = Omit<InputHTMLAttributes<HTMLInputElement>, "size">
   error?: string;
 };
 
-export function TextField({
-  className,
-  error,
-  hint,
-  id,
-  label,
-  ...inputProps
-}: TextFieldProps) {
+export function TextField({ className, error, hint, id, label, ...inputProps }: TextFieldProps) {
   const generatedId = useId();
   const inputId = id ?? generatedId;
   const hintId = hint ? `${inputId}-hint` : undefined;
   const errorId = error ? `${inputId}-error` : undefined;
-  const describedBy = [inputProps["aria-describedby"], hintId, errorId]
-    .filter(Boolean)
-    .join(" ");
+  const describedBy = [inputProps["aria-describedby"], hintId, errorId].filter(Boolean).join(" ");
 
   return (
     <div className="bs-field">

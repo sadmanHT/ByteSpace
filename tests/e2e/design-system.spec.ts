@@ -1,7 +1,9 @@
 import AxeBuilder from "@axe-core/playwright";
 import { expect, test } from "@playwright/test";
 
-test("design-system fixture matches the documented desktop foundation", async ({ page }, testInfo) => {
+test("design-system fixture matches the documented desktop foundation", async ({
+  page,
+}, testInfo) => {
   await page.setViewportSize({ width: 1440, height: 1000 });
   await page.goto("/design-system");
   await page.waitForLoadState("networkidle");

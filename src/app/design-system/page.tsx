@@ -19,7 +19,10 @@ export default function DesignSystemPage() {
     <main className="py-16 sm:py-20" data-testid="design-system-fixture">
       <Container className="grid gap-16">
         <header className="grid max-w-4xl gap-4">
-          <p className="type-label-s uppercase tracking-[0.18em]" style={{ color: "var(--bs-brand-primary)" }}>
+          <p
+            className="type-label-s uppercase tracking-[0.18em]"
+            style={{ color: "var(--bs-brand-primary)" }}
+          >
             ByteSpace · Design system fixture
           </p>
           <h1 className="type-heading-m">Visual foundations before page composition.</h1>
@@ -139,8 +142,8 @@ export default function DesignSystemPage() {
             Blue surface + lime CTA
           </h2>
           <p className="type-body-m max-w-2xl text-white">
-            This pairing is deliberately isolated here so brand contrast and component states can
-            be verified before the same tokens spread across product screens.
+            This pairing is deliberately isolated here so brand contrast and component states can be
+            verified before the same tokens spread across product screens.
           </p>
           <div>
             <Button variant="accent">Explore courses</Button>

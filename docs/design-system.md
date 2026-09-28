@@ -26,17 +26,17 @@ The CSS custom properties in `src/styles/tokens.css` are the single source for t
 
 ## Typography scale
 
-| Token | Size | Line height | Family / weight |
-| --- | ---: | ---: | --- |
-| Heading L | 72px | 120% | Poppins 600 |
-| Heading M | 44px | 120% | Poppins 600 |
-| Heading S | 36px | 120% | Poppins 600 |
-| Heading XS | 20px | 120% | Poppins 600 |
-| Body L | 18px | 160% | Satoshi 400 |
-| Body M | 16px | 160% | Satoshi 400 |
-| Body S | 14px | 160% | Satoshi 400 |
-| Body XS | 12px | 160% | Satoshi 400 |
-| Label L/M/S/XS | 18/16/14/12px | 120% | Satoshi 500 |
+| Token          |          Size | Line height | Family / weight |
+| -------------- | ------------: | ----------: | --------------- |
+| Heading L      |          72px |        120% | Poppins 600     |
+| Heading M      |          44px |        120% | Poppins 600     |
+| Heading S      |          36px |        120% | Poppins 600     |
+| Heading XS     |          20px |        120% | Poppins 600     |
+| Body L         |          18px |        160% | Satoshi 400     |
+| Body M         |          16px |        160% | Satoshi 400     |
+| Body S         |          14px |        160% | Satoshi 400     |
+| Body XS        |          12px |        160% | Satoshi 400     |
+| Label L/M/S/XS | 18/16/14/12px |        120% | Satoshi 500     |
 
 ## Primitive policy
 
