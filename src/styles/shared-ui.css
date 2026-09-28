@@ -133,7 +133,7 @@
 
 .bs-footer__description {
   margin: 0;
-  color: var(--bs-screen-gray-300);
+  color: var(--bs-screen-gray-700);
   font-family: var(--bs-font-body);
   font-size: 14px;
   line-height: 20px;
@@ -495,7 +495,21 @@
   .bs-footer__main,
   .bs-footer__navigation,
   .bs-footer__browse-lists {
-    grid-template-columns: 1fr;
+    min-width: 0;
+    grid-template-columns: minmax(0, 1fr);
+  }
+
+  .bs-footer__newsletter-column,
+  .bs-footer__browse-column,
+  .bs-footer__platform-column,
+  .bs-newsletter,
+  .bs-newsletter__row {
+    min-width: 0;
+    max-width: 100%;
+  }
+
+  .bs-newsletter {
+    width: 100%;
   }
 
   .bs-footer__main {
@@ -518,6 +532,7 @@
   .bs-newsletter__input,
   .bs-newsletter__button {
     width: 100%;
+    min-width: 0;
   }
 
   .bs-footer__bottom {
@@ -535,7 +550,18 @@
     flex-wrap: wrap;
   }
 
+  .bs-search-field,
+  .bs-category-tabs,
   .bs-pagination {
+    max-width: 100%;
+  }
+
+  .bs-search-field {
+    width: 100%;
+  }
+
+  .bs-pagination {
+    flex-wrap: wrap;
     gap: 12px;
   }
 }
