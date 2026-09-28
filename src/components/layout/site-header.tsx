@@ -39,10 +39,10 @@ export function SiteHeader({ activeItem, className }: SiteHeaderProps) {
         </nav>
 
         <nav aria-label="Account" className="bs-site-header__account">
-          <Link className="bs-site-header__account-link" href="/login">
+          <Link className="bs-site-header__account-link" href="/login" prefetch={false}>
             Sign In
           </Link>
-          <Link className="bs-site-header__account-link" href="/register">
+          <Link className="bs-site-header__account-link" href="/register" prefetch={false}>
             Join Us
           </Link>
           <Link aria-label="Shopping bag" className="bs-site-header__bag" href="/courses">
