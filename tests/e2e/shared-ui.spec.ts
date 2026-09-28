@@ -28,7 +28,9 @@ test("shared shell and reusable controls work at the Figma desktop reference", a
 
   await page.getByRole("link", { name: "Courses" }).click();
   await expect(page).toHaveURL(/\/courses$/);
-  await expect(page.getByRole("heading", { name: "Course catalogue foundation route." })).toBeVisible();
+  await expect(
+    page.getByRole("heading", { name: "Course catalogue foundation route." }),
+  ).toBeVisible();
   await page.getByRole("link", { name: "Home" }).click();
   await expect(page).toHaveURL(/\/$/);
 
@@ -38,10 +40,7 @@ test("shared shell and reusable controls work at the Figma desktop reference", a
   await expect(search).toBeFocused();
 
   await page.getByRole("button", { name: "Music" }).click();
-  await expect(page.getByRole("button", { name: "Music" })).toHaveAttribute(
-    "aria-pressed",
-    "true",
-  );
+  await expect(page.getByRole("button", { name: "Music" })).toHaveAttribute("aria-pressed", "true");
 
   await page.getByRole("button", { name: "Page 2" }).click();
   await expect(page.getByRole("button", { name: "Page 2" })).toHaveAttribute(

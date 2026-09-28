@@ -12,10 +12,7 @@ describe("Pagination", () => {
     render(<Pagination currentPage={1} onPageChange={onPageChange} pageCount={5} />);
 
     expect(screen.getByRole("button", { name: "Previous page" })).toBeDisabled();
-    expect(screen.getByRole("button", { name: "Page 1" })).toHaveAttribute(
-      "aria-current",
-      "page",
-    );
+    expect(screen.getByRole("button", { name: "Page 1" })).toHaveAttribute("aria-current", "page");
 
     await user.click(screen.getByRole("button", { name: "Page 2" }));
     expect(onPageChange).toHaveBeenCalledWith(2);

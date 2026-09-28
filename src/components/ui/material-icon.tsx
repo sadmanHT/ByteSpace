@@ -63,13 +63,7 @@ export function MaterialIcon({ name, ...props }: MaterialIconProps) {
   const geometry = iconGeometry[name];
 
   return (
-    <svg
-      aria-hidden="true"
-      fill="currentColor"
-      focusable="false"
-      viewBox="0 0 24 24"
-      {...props}
-    >
+    <svg aria-hidden="true" fill="currentColor" focusable="false" viewBox="0 0 24 24" {...props}>
       <path d={geometry.path} transform={geometry.transform} />
     </svg>
   );

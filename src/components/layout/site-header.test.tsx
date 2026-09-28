@@ -13,9 +13,6 @@ describe("SiteHeader", () => {
     expect(screen.getByRole("link", { name: "Creators" })).toHaveAttribute("href", "/creators");
     expect(screen.getByRole("link", { name: "Sign In" })).toHaveAttribute("href", "/login");
     expect(screen.getByRole("link", { name: "Join Us" })).toHaveAttribute("href", "/register");
-    expect(screen.getByRole("link", { name: "Courses" })).toHaveAttribute(
-      "aria-current",
-      "page",
-    );
+    expect(screen.getByRole("link", { name: "Courses" })).toHaveAttribute("aria-current", "page");
   });
 });

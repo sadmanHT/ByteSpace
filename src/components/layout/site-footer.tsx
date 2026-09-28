@@ -46,7 +46,10 @@ export function SiteFooter() {
     <footer className="bs-footer">
       <div className="bs-footer__content">
         <div className="bs-footer__main">
-          <section className="bs-footer__newsletter-column" aria-labelledby="footer-newsletter-title">
+          <section
+            className="bs-footer__newsletter-column"
+            aria-labelledby="footer-newsletter-title"
+          >
             <div className="bs-footer__brand-copy">
               <Link aria-label="ByteSpace home" href="/">
                 <BrandLogo tone="footer" />
