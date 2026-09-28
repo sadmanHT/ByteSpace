@@ -44,9 +44,7 @@ test("shared shell and reusable controls work at the Figma desktop reference", a
   const primaryNavigation = page.getByRole("navigation", { name: "Primary" });
   await primaryNavigation.getByRole("link", { name: "Courses", exact: true }).click();
   await expect(page).toHaveURL(/\/courses$/);
-  await expect(
-    page.getByRole("heading", { name: "Course catalogue foundation route." }),
-  ).toBeVisible();
+  await expect(page.getByTestId("course-catalogue-page")).toBeVisible();
   await page
     .getByRole("navigation", { name: "Primary" })
     .getByRole("link", { name: "Home", exact: true })
