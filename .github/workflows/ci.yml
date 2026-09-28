@@ -9,7 +9,7 @@ on:
       - main
 
 permissions:
-  contents: read
+  contents: write
 
 jobs:
   quality:
@@ -40,14 +40,20 @@ jobs:
             pnpm install --no-frozen-lockfile
           fi
 
-      - name: Upload generated lockfile during bootstrap
-        if: ${{ hashFiles('pnpm-lock.yaml') != '' }}
-        uses: actions/upload-artifact@v7
-        with:
-          name: pnpm-lockfile
-          path: pnpm-lock.yaml
-          if-no-files-found: error
-          retention-days: 1
+      - name: Commit bootstrap lockfile
+        if: ${{ github.event_name == 'push' && hashFiles('pnpm-lock.yaml') != '' }}
+        shell: bash
+        run: |
+          if git ls-files --error-unmatch pnpm-lock.yaml >/dev/null 2>&1; then
+            echo "pnpm-lock.yaml is already tracked."
+            exit 0
+          fi
+
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add pnpm-lock.yaml
+          git commit -m "chore: add pnpm lockfile [skip ci]"
+          git push origin "HEAD:${GITHUB_REF_NAME}"
 
       - name: Formatting
         run: pnpm format:check
