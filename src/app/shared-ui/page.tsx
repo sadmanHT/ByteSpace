@@ -35,7 +35,7 @@ export default function SharedUiPage() {
       <section className="bs-shared-ui-hero">
         <SiteHeader activeItem="home" />
         <Container className="grid gap-8 py-20">
-          <p className="type-label-s uppercase tracking-[0.18em] text-white/70">
+          <p className="type-label-s uppercase tracking-[0.18em] text-white/80">
             Phase 3 · Shared UI fixture
           </p>
           <h1 className="type-heading-m max-w-3xl !text-white">
