@@ -39,20 +39,22 @@ export function AuthLayout({ children, mode }: AuthLayoutProps) {
 
   return (
     <main className="bs-auth-page" data-auth-mode={mode}>
-      <div className="bs-auth-grid" aria-hidden="true" />
+      <div aria-hidden="true" className="bs-auth-grid" />
 
       <Link aria-label="ByteSpace home" className="bs-auth-logo" href="/">
         <BrandLogo />
       </Link>
 
-      <section className="bs-auth-editorial" aria-labelledby="auth-editorial-heading">
+      <section aria-labelledby="auth-editorial-heading" className="bs-auth-editorial">
         <div className="bs-auth-editorial__copy">
           <h1 id="auth-editorial-heading">{copy.heading}</h1>
           <p>{copy.body}</p>
         </div>
 
-        <div className="bs-auth-art" aria-hidden="true">
-          {previewSecondary ? <AuthCoursePreview course={previewSecondary} position="back" /> : null}
+        <div aria-hidden="true" className="bs-auth-art">
+          {previewSecondary ? (
+            <AuthCoursePreview course={previewSecondary} position="back" />
+          ) : null}
           {previewPrimary ? <AuthCoursePreview course={previewPrimary} position="front" /> : null}
 
           <Image
@@ -78,7 +80,7 @@ export function AuthLayout({ children, mode }: AuthLayoutProps) {
           />
         </div>
 
-        <aside className="bs-auth-students-card" aria-label="Happy students">
+        <aside aria-label="Happy students" className="bs-auth-students-card">
           <div>
             <strong>Happy Students</strong>
             <span>4.5 (240)</span>
@@ -87,7 +89,10 @@ export function AuthLayout({ children, mode }: AuthLayoutProps) {
         </aside>
       </section>
 
-      <section className="bs-auth-panel" aria-label={mode === "register" ? "Create an account" : "Sign in"}>
+      <section
+        aria-label={mode === "register" ? "Create an account" : "Sign in"}
+        className="bs-auth-panel"
+      >
         {children}
       </section>
     </main>
