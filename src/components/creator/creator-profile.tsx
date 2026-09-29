@@ -122,7 +122,11 @@ export function CreatorProfile({ courses, creator }: CreatorProfileProps) {
         <div className="bs-creator-body__inner">
           <div className="bs-search-controls">
             <div className="bs-search-controls__filters">
-              <FilterControl aria-label="Reset creator course filters" icon="filter" onClick={resetFilters}>
+              <FilterControl
+                aria-label="Reset creator course filters"
+                icon="filter"
+                onClick={resetFilters}
+              >
                 Filter
               </FilterControl>
               <CourseFilterSelect
