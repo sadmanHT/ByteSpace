@@ -1,0 +1,40 @@
+name: Phase 5 Format Export
+
+on:
+  push:
+    branches:
+      - feature/bytespace-new
+
+permissions:
+  contents: read
+
+jobs:
+  format-export:
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v6
+      - name: Set up pnpm
+        uses: pnpm/action-setup@v4
+        with:
+          version: 12.7.0
+          run_install: false
+      - name: Set up Node.js
+        uses: actions/setup-node@v7
+        with:
+          node-version: 22
+          cache: pnpm
+          cache-dependency-path: pnpm-lock.yaml
+      - name: Install dependencies
+        run: pnpm install --frozen-lockfile
+      - name: Format source
+        run: pnpm format
+      - name: Package formatted files
+        run: tar -czf phase5-formatted.tar.gz docs/home-page-audit.md src/app/page.tsx src/app/page.test.tsx src/app/courses/page.tsx src/app/courses/course-catalogue.tsx
+      - name: Upload formatted files
+        uses: actions/upload-artifact@v7
+        with:
+          name: phase5-formatted
+          path: phase5-formatted.tar.gz
+          retention-days: 1
