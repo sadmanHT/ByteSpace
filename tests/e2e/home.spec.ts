@@ -17,7 +17,6 @@ test("Home matches the flagship Figma flow and core interactions", async ({ page
 
   await page.setViewportSize({ width: 1440, height: 1000 });
   await page.goto("/");
-  await page.waitForLoadState("networkidle");
 
   await expect(
     page.getByRole("heading", {
@@ -45,7 +44,12 @@ test("Home matches the flagship Figma flow and core interactions", async ({ page
   await expect(page.getByRole("link", { name: "Mastering Money Management" })).toBeVisible();
 
   await page.goBack();
-  await page.waitForLoadState("networkidle");
+  await expect(
+    page.getByRole("heading", {
+      level: 1,
+      name: "Get Access to Hundreds Courses Available",
+    }),
+  ).toBeVisible();
 
   const music = page.getByRole("button", { name: "Music" });
   await music.click();
@@ -55,7 +59,12 @@ test("Home matches the flagship Figma flow and core interactions", async ({ page
   await expect(page.getByRole("heading", { name: "Learn Figma from Basic" })).toBeVisible();
 
   await page.goBack();
-  await page.waitForLoadState("networkidle");
+  await expect(
+    page.getByRole("heading", {
+      level: 1,
+      name: "Get Access to Hundreds Courses Available",
+    }),
+  ).toBeVisible();
 
   const creatorCta = page.getByRole("link", { name: "Join as Creator" });
   await creatorCta.scrollIntoViewIfNeeded();
@@ -64,7 +73,12 @@ test("Home matches the flagship Figma flow and core interactions", async ({ page
   await expect(page.getByRole("heading", { name: "Creator foundation route." })).toBeVisible();
 
   await page.goBack();
-  await page.waitForLoadState("networkidle");
+  await expect(
+    page.getByRole("heading", {
+      level: 1,
+      name: "Get Access to Hundreds Courses Available",
+    }),
+  ).toBeVisible();
 
   await expect(page.locator(".bs-footer")).toBeVisible();
 
@@ -98,7 +112,12 @@ test("Home matches the flagship Figma flow and core interactions", async ({ page
 test("Home has no horizontal overflow and remains keyboard usable at 390px", async ({ page }) => {
   await page.setViewportSize({ width: 390, height: 844 });
   await page.goto("/");
-  await page.waitForLoadState("networkidle");
+  await expect(
+    page.getByRole("heading", {
+      level: 1,
+      name: "Get Access to Hundreds Courses Available",
+    }),
+  ).toBeVisible();
 
   const geometry = await page.evaluate(() => ({
     viewportWidth: window.innerWidth,
