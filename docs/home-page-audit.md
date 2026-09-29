@@ -59,6 +59,10 @@ The native author/content associations are preserved for Sarah M. (Enthusiastic 
 
 The native hero learner is priority-loaded. Below-fold imagery remains lazy by default. Existing Phase 4 course derivatives are reused. Home image filenames preserve native Figma hashes. Decorative geometric layers are CSS and pointer-inert.
 
+## Accessibility fidelity
+
+The native Home course-card success badge uses #18CF6D text on #DAFEE9. At the native 12px label size that foreground is below WCAG AA contrast. Phase 5 preserves the #DAFEE9 Figma background and success semantics but uses #166534 for the text/icon foreground so the repeated Home cards remain readable without changing their structure or hierarchy.
+
 ## Verification
 
 The Home E2E suite captures the full page plus hero, course grid, editorial section, creator CTA, testimonials, and footer at 1440px. It also runs axe, console/network monitoring, interaction/navigation checks, and a 390px overflow/focus smoke test.
