@@ -38,3 +38,5 @@ jobs:
           name: phase5-formatted
           path: phase5-formatted.tar.gz
           retention-days: 1
+
+# Phase 5 formatter trigger
