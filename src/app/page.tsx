@@ -105,9 +105,18 @@ export default function Home() {
                 resources you need.
               </p>
               <dl className="bs-home-stats">
-                <div><dt>Students</dt><dd>12K</dd></div>
-                <div><dt>Courses</dt><dd>70+</dd></div>
-                <div><dt>Creators</dt><dd>16</dd></div>
+                <div>
+                  <dt>Students</dt>
+                  <dd>12K</dd>
+                </div>
+                <div>
+                  <dt>Courses</dt>
+                  <dd>70+</dd>
+                </div>
+                <div>
+                  <dt>Creators</dt>
+                  <dd>16</dd>
+                </div>
               </dl>
             </div>
 
@@ -122,11 +131,16 @@ export default function Home() {
               <div className="bs-home-editorial__course-card">
                 <CourseCard course={courses[0]} levelTone="success" overflowTone="dark" />
               </div>
-              <div aria-hidden="true" className="bs-home-decorative-orb bs-home-decorative-orb--yellow" />
+              <div
+                aria-hidden="true"
+                className="bs-home-decorative-orb bs-home-decorative-orb--yellow"
+              />
               <div className="bs-home-mini-progress">
                 <span>Learning Progress</span>
                 <strong>55%</strong>
-                <div><i /></div>
+                <div>
+                  <i />
+                </div>
               </div>
             </div>
           </article>
@@ -149,7 +163,10 @@ export default function Home() {
                 <span>Year to Date</span>
                 <strong>2023</strong>
               </div>
-              <div aria-hidden="true" className="bs-home-decorative-orb bs-home-decorative-orb--purple" />
+              <div
+                aria-hidden="true"
+                className="bs-home-decorative-orb bs-home-decorative-orb--purple"
+              />
             </div>
 
             <div className="bs-home-editorial__copy">
@@ -170,13 +187,19 @@ export default function Home() {
       </section>
 
       <section className="bs-home-creator-cta" data-testid="home-creator-cta">
-        <div aria-hidden="true" className="bs-home-creator-cta__shape bs-home-creator-cta__shape--one" />
-        <div aria-hidden="true" className="bs-home-creator-cta__shape bs-home-creator-cta__shape--two" />
+        <div
+          aria-hidden="true"
+          className="bs-home-creator-cta__shape bs-home-creator-cta__shape--one"
+        />
+        <div
+          aria-hidden="true"
+          className="bs-home-creator-cta__shape bs-home-creator-cta__shape--two"
+        />
         <div className="bs-home-creator-cta__content">
           <h2>Unlock Your Potential as a Creator with ByteSpace</h2>
           <p>
-            Experience the collaboration of numerous creators and an expanding selection of
-            courses. Register now and become a part of a community comprising over 10,000 local and
+            Experience the collaboration of numerous creators and an expanding selection of courses.
+            Register now and become a part of a community comprising over 10,000 local and
             international creators. Utilize our Course Editor, and showcase your expertise by
             publishing your finest course on the ByteSpace Course Library.
           </p>

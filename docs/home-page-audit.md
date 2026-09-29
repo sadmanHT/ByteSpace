@@ -11,6 +11,7 @@ Native source SHA-256: a5c21e6873e4a024db448e30ad30703edc797a49bf4e1da4eaa2cc2dc
 Home is node 1:1067, 1440 x 6377, on the same 12-column / 120px margin / 40px gutter system established in Phase 2.
 
 Major sections are:
+
 - Hero 1:1695, 1440 x 1024.
 - Partner strip 1:1794, 1440 x 202.
 - Discovery intro 12:101.

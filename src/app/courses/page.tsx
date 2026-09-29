@@ -18,7 +18,9 @@ export default async function CoursesPage({ searchParams }: CoursesPageProps) {
       <section className="bs-catalogue-hero">
         <SiteHeader activeItem="courses" />
         <Container className="grid gap-4 pb-16 pt-10">
-          <p className="type-label-s uppercase tracking-[0.18em] text-white/80">ByteSpace courses</p>
+          <p className="type-label-s uppercase tracking-[0.18em] text-white/80">
+            ByteSpace courses
+          </p>
           <h1 className="type-heading-m max-w-3xl !text-white">
             Explore the course-card system from the native Figma design.
           </h1>

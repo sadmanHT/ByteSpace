@@ -15,8 +15,13 @@ describe("Home", () => {
     expect(search).toHaveAttribute("name", "query");
     expect(search).toHaveAttribute("placeholder", "Course, topic, creator");
 
-    expect(screen.getAllByRole("link", { name: "Learn Figma from Basic" }).length).toBeGreaterThan(0);
-    expect(screen.getByRole("link", { name: "Join as Creator" })).toHaveAttribute("href", "/creators");
+    expect(screen.getAllByRole("link", { name: "Learn Figma from Basic" }).length).toBeGreaterThan(
+      0,
+    );
+    expect(screen.getByRole("link", { name: "Join as Creator" })).toHaveAttribute(
+      "href",
+      "/creators",
+    );
   });
 
   it("exposes the complete Home category set and selectable state", async () => {
@@ -24,13 +29,21 @@ describe("Home", () => {
     render(<Home />);
 
     const music = screen.getByRole("button", { name: "Music" });
-    expect(screen.getByRole("button", { name: "Featured" })).toHaveAttribute("aria-pressed", "true");
+    expect(screen.getByRole("button", { name: "Featured" })).toHaveAttribute(
+      "aria-pressed",
+      "true",
+    );
 
     await user.click(music);
     expect(music).toHaveAttribute("aria-pressed", "true");
-    expect(screen.getByRole("button", { name: "Featured" })).toHaveAttribute("aria-pressed", "false");
+    expect(screen.getByRole("button", { name: "Featured" })).toHaveAttribute(
+      "aria-pressed",
+      "false",
+    );
 
-    expect(screen.getByRole("button", { name: "Freelance & Entrepreneurship" })).toBeInTheDocument();
+    expect(
+      screen.getByRole("button", { name: "Freelance & Entrepreneurship" }),
+    ).toBeInTheDocument();
     expect(screen.getByRole("button", { name: "Data Science" })).toBeInTheDocument();
   });
 

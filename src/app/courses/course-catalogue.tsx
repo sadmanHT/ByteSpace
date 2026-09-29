@@ -61,7 +61,9 @@ export function CourseCatalogue({ courses, initialQuery = "" }: CourseCatalogueP
           >
             <option value="all">All categories</option>
             {courseCategories.map((item) => (
-              <option key={item.id} value={item.id}>{item.label}</option>
+              <option key={item.id} value={item.id}>
+                {item.label}
+              </option>
             ))}
           </select>
         </label>
@@ -111,7 +113,9 @@ export function CourseCatalogue({ courses, initialQuery = "" }: CourseCatalogueP
       ) : (
         <>
           <div className="bs-course-grid" data-testid="course-grid">
-            {pagination.items.map((course) => <CourseCard course={course} key={course.id} />)}
+            {pagination.items.map((course) => (
+              <CourseCard course={course} key={course.id} />
+            ))}
           </div>
           {pagination.pageCount > 1 ? (
             <Pagination
