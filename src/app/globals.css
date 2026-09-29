@@ -8,6 +8,7 @@
 @import "../styles/course.css";
 @import "../styles/home.css";
 @import "../styles/auth.css";
+@import "../styles/discovery.css";
 
 * {
   box-sizing: border-box;
