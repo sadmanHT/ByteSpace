@@ -71,7 +71,9 @@ test("Search/Courses matches native Figma geometry and supports discovery", asyn
   await expect(page.locator(".bs-course-card").first()).toContainText("Balancing Productivity");
 
   await page.getByRole("link", { name: "Balancing Productivity and Self-Care" }).first().click();
-  await expect(page.getByRole("heading", { name: "Balancing Productivity and Self-Care" })).toBeVisible();
+  await expect(
+    page.getByRole("heading", { name: "Balancing Productivity and Self-Care" }),
+  ).toBeVisible();
 
   expect(failures).toEqual([]);
   await expectAccessible(page);
@@ -119,7 +121,9 @@ test("Creator Profile matches native Figma structure and exposes honest local fo
   await expect(page.locator(".bs-course-card").first()).toContainText("Balancing Productivity");
 
   await page.getByRole("link", { name: "Balancing Productivity and Self-Care" }).click();
-  await expect(page.getByRole("heading", { name: "Balancing Productivity and Self-Care" })).toBeVisible();
+  await expect(
+    page.getByRole("heading", { name: "Balancing Productivity and Self-Care" }),
+  ).toBeVisible();
   await page.goBack();
 
   await page.locator(".bs-footer").scrollIntoViewIfNeeded();
@@ -134,7 +138,9 @@ test("Creator Profile matches native Figma structure and exposes honest local fo
   });
 });
 
-test("Phase 7 discovery routes stay usable without horizontal overflow at 390px", async ({ page }) => {
+test("Phase 7 discovery routes stay usable without horizontal overflow at 390px", async ({
+  page,
+}) => {
   await page.setViewportSize({ width: 390, height: 844 });
 
   for (const route of ["/courses", "/creators/purepearl-studio"]) {
