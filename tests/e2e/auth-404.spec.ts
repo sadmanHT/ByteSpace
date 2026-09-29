@@ -55,6 +55,19 @@ test("Register matches the desktop auth frame and validates accessibly", async (
   expect(Math.round(panelBox?.width ?? 0)).toBe(579);
   expect(Math.round(panelBox?.height ?? 0)).toBe(784);
 
+  await testInfo.attach("register-1440", {
+    body: await page.screenshot({ fullPage: true }),
+    contentType: "image/png",
+  });
+  await testInfo.attach("register-form-panel", {
+    body: await panel.screenshot(),
+    contentType: "image/png",
+  });
+  await testInfo.attach("register-editorial-composition", {
+    body: await page.locator(".bs-auth-editorial").screenshot(),
+    contentType: "image/png",
+  });
+
   await page.keyboard.press("Tab");
   await expect(page.getByRole("link", { name: "ByteSpace home" })).toBeFocused();
   await page.keyboard.press("Tab");
@@ -84,19 +97,6 @@ test("Register matches the desktop auth frame and validates accessibly", async (
   expect(credentialLeak).toEqual([]);
   expect(failures).toEqual([]);
   await expectNoAxeViolations(page);
-
-  await testInfo.attach("register-1440", {
-    body: await page.screenshot({ fullPage: true }),
-    contentType: "image/png",
-  });
-  await testInfo.attach("register-form-panel", {
-    body: await panel.screenshot(),
-    contentType: "image/png",
-  });
-  await testInfo.attach("register-editorial-composition", {
-    body: await page.locator(".bs-auth-editorial").screenshot(),
-    contentType: "image/png",
-  });
 });
 
 test("Login validates, stays frontend-only, and links to registration", async ({
@@ -110,6 +110,11 @@ test("Login validates, stays frontend-only, and links to registration", async ({
 
   await expect(page.getByRole("heading", { name: "Sign In", exact: true })).toBeVisible();
   await expect(page.getByLabel("Password")).toHaveAttribute("type", "password");
+
+  await testInfo.attach("login-1440", {
+    body: await page.screenshot({ fullPage: true }),
+    contentType: "image/png",
+  });
 
   await page.getByRole("button", { name: "Sign In" }).click();
   await expect(page.getByText("Enter your email address.")).toBeVisible();
@@ -131,11 +136,6 @@ test("Login validates, stays frontend-only, and links to registration", async ({
 
   expect(failures).toEqual([]);
   await expectNoAxeViolations(page);
-
-  await testInfo.attach("login-1440", {
-    body: await page.screenshot({ fullPage: true }),
-    contentType: "image/png",
-  });
 });
 
 test("framework unknown routes and explicit 404 route share the ByteSpace experience", async ({
