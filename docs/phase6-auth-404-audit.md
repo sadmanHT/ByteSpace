@@ -95,6 +95,10 @@ No authentication backend contract is supplied. Phase 6 therefore implements onl
 
 The implementation does not create tokens, persist credentials, log passwords, or display a fake authenticated state.
 
+## Accessibility adaptation
+
+The native Login separator uses the raw muted gray `#82868E` at 12px on white. Automated contrast testing measures that combination at about 3.65:1, below the 4.5:1 WCAG AA requirement for small text. The implementation preserves the separator structure, spacing, and border treatment while using the established semantic text-secondary color `#4B4C53` for the small “or” label. The raw Figma gray remains available as a palette token.
+
 ## Verification
 
 Playwright verifies:
