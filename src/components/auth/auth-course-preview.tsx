@@ -9,7 +9,10 @@ export type AuthCoursePreviewProps = {
 
 export function AuthCoursePreview({ course, position }: AuthCoursePreviewProps) {
   return (
-    <article className={`bs-auth-course-preview bs-auth-course-preview--${position}`} aria-hidden="true">
+    <article
+      aria-hidden="true"
+      className={`bs-auth-course-preview bs-auth-course-preview--${position}`}
+    >
       <div className="bs-auth-course-preview__image">
         <Image alt="" fill sizes="280px" src={course.image.src} />
       </div>
