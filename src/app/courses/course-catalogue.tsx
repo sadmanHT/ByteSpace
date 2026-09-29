@@ -13,10 +13,11 @@ const PAGE_SIZE = 3;
 
 export type CourseCatalogueProps = {
   courses: readonly Course[];
+  initialQuery?: string;
 };
 
-export function CourseCatalogue({ courses }: CourseCatalogueProps) {
-  const [query, setQuery] = useState("");
+export function CourseCatalogue({ courses, initialQuery = "" }: CourseCatalogueProps) {
+  const [query, setQuery] = useState(initialQuery);
   const [category, setCategory] = useState<CourseCategory | "all">("all");
   const [level, setLevel] = useState<CourseLevel | "all">("all");
   const [sort, setSort] = useState<CourseSort>("relevance");
@@ -48,7 +49,6 @@ export function CourseCatalogue({ courses }: CourseCatalogueProps) {
           placeholder="Search courses"
           value={query}
         />
-
         <label className="bs-catalogue__select-field">
           <span>Category</span>
           <select
@@ -61,13 +61,10 @@ export function CourseCatalogue({ courses }: CourseCatalogueProps) {
           >
             <option value="all">All categories</option>
             {courseCategories.map((item) => (
-              <option key={item.id} value={item.id}>
-                {item.label}
-              </option>
+              <option key={item.id} value={item.id}>{item.label}</option>
             ))}
           </select>
         </label>
-
         <label className="bs-catalogue__select-field">
           <span>Level</span>
           <select
@@ -84,7 +81,6 @@ export function CourseCatalogue({ courses }: CourseCatalogueProps) {
             <option value="advanced">Advanced</option>
           </select>
         </label>
-
         <label className="bs-catalogue__select-field">
           <span>Sort</span>
           <select
@@ -115,11 +111,8 @@ export function CourseCatalogue({ courses }: CourseCatalogueProps) {
       ) : (
         <>
           <div className="bs-course-grid" data-testid="course-grid">
-            {pagination.items.map((course) => (
-              <CourseCard course={course} key={course.id} />
-            ))}
+            {pagination.items.map((course) => <CourseCard course={course} key={course.id} />)}
           </div>
-
           {pagination.pageCount > 1 ? (
             <Pagination
               currentPage={pagination.currentPage}
