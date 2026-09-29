@@ -5,10 +5,13 @@ import { AvatarStack } from "@/components/ui/avatar-stack";
 import { MaterialIcon } from "@/components/ui/material-icon";
 
 const heroLearners = [
+  { alt: "", src: "/assets/avatars/9ef8cb329b949267cc8214b6727067c4a13af4b4.webp" },
   { alt: "", src: "/assets/avatars/b44979e1c98ecb3ec92ac86805fe55581fbeaa60.webp" },
-  { alt: "", src: "/assets/avatars/3fe559181733e0fb69226caee836e40092facb44.webp" },
-  { alt: "", src: "/assets/avatars/0577f0e9b7fca2f32639871454da0de95f951709.webp" },
-  { alt: "", src: "/assets/avatars/d0cd3adb501c64c1b4cf766de6abb9fe8925fb5f.webp" },
+  { alt: "", src: "/assets/avatars/83fb3e04056cc892636460bee5791aa3f243854c.webp" },
+  { alt: "", src: "/assets/avatars/f3cf29a8fed39589ceb38423e65b26b8d6c93123.webp" },
+  { alt: "", src: "/assets/avatars/5824acacb3b76175bc84084ec18597109498f96d.webp" },
+  { alt: "", src: "/assets/avatars/7fdccc783264eedc4fb989984eecbc4058a219f2.webp" },
+  { alt: "", src: "/assets/avatars/1e078348a54489bfd231d82fe1944770883c8d80.webp" },
 ] as const;
 
 export function HomeHero() {
