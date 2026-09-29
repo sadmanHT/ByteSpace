@@ -209,8 +209,8 @@
   display: grid;
   width: 258px;
   min-height: 121px;
-  gap: 16px;
-  padding: 18px 20px;
+  gap: 10px;
+  padding: 16px;
 }
 
 .bs-home-students-card__copy {
@@ -228,6 +228,20 @@
 
 .bs-home-students-card__rating svg {
   color: var(--bs-brand-accent);
+}
+
+.bs-home-students-card .bs-avatar-stack {
+  height: 43px;
+}
+
+.bs-home-students-card .bs-avatar-stack > * + * {
+  margin-left: -16px;
+}
+
+.bs-home-students-card .bs-avatar-stack__image,
+.bs-home-students-card .bs-avatar-stack__overflow {
+  width: 43px;
+  height: 43px;
 }
 
 .bs-home-partners {
