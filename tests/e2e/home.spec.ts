@@ -70,7 +70,8 @@ test("Home matches the flagship Figma flow and core interactions", async ({ page
   await creatorCta.scrollIntoViewIfNeeded();
   await creatorCta.click();
   await expect(page).toHaveURL(/\/creators$/);
-  await expect(page.getByRole("heading", { name: "Creator foundation route." })).toBeVisible();
+  await expect(page.getByTestId("creator-profile-page")).toBeVisible();
+  await expect(page.getByRole("heading", { name: "PurePearl Studio" })).toBeVisible();
 
   await page.goBack();
   await expect(
