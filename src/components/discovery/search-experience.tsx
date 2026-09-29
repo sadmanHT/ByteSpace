@@ -4,7 +4,6 @@ import { useMemo, useState } from "react";
 
 import { CourseCard } from "@/components/course/course-card";
 import { CourseFilterSelect } from "@/components/discovery/course-filter-select";
-import { Container } from "@/components/layout/container";
 import { SiteFooter } from "@/components/layout/site-footer";
 import { SiteHeader } from "@/components/layout/site-header";
 import { Chip } from "@/components/ui/chip";
@@ -12,11 +11,7 @@ import { FilterControl } from "@/components/ui/filter-control";
 import { Pagination } from "@/components/ui/pagination";
 import { SearchField } from "@/components/ui/search-field";
 import { courseCategories } from "@/data/courses";
-import {
-  buildSearchPlacements,
-  resetDiscoveryPage,
-  type CoursePlacement,
-} from "@/lib/discovery";
+import { buildSearchPlacements, resetDiscoveryPage, type CoursePlacement } from "@/lib/discovery";
 import {
   filterCourses,
   normalizeCourseQuery,
