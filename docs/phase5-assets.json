@@ -1,0 +1,30 @@
+{
+  "sourceFile": "ByteSpace New Check website (Copy).fig",
+  "sourceSha256": "a5c21e6873e4a024db448e30ad30703edc797a49bf4e1da4eaa2cc2dc8a97089",
+  "assets": [
+    {
+      "figmaHash": "29a52a24e51266edcd7d57d73392ee5fc4833220",
+      "sourceNode": "1:1796",
+      "output": "/assets/home/29a52a24e51266edcd7d57d73392ee5fc4833220.webp",
+      "role": "hero learner and editorial learner"
+    },
+    {
+      "figmaHash": "0d6596fb1df66aaf843ee85722f439fada233946",
+      "sourceNode": "34:1011",
+      "output": "/assets/home/0d6596fb1df66aaf843ee85722f439fada233946.webp",
+      "role": "creator editorial person"
+    },
+    {
+      "figmaHash": "63c4be83222c85e6c852819bc5d4b24a87a87fb6",
+      "sourceNode": "34:1190",
+      "output": "/assets/home/63c4be83222c85e6c852819bc5d4b24a87a87fb6.webp",
+      "role": "James L testimonial"
+    },
+    {
+      "figmaHash": "728c3b1d33fe647a46f9bf668322f8c1d94ed937",
+      "sourceNode": "34:1196",
+      "output": "/assets/home/728c3b1d33fe647a46f9bf668322f8c1d94ed937.webp",
+      "role": "Alex B testimonial"
+    }
+  ]
+}

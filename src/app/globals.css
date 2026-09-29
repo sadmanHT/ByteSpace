@@ -6,6 +6,7 @@
 @import "../styles/components.css";
 @import "../styles/shared-ui.css";
 @import "../styles/course.css";
+@import "../styles/home.css";
 
 * {
   box-sizing: border-box;
