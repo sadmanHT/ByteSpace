@@ -108,7 +108,7 @@ test("Login validates, stays frontend-only, and links to registration", async ({
   await page.goto("/login");
   await page.waitForLoadState("networkidle");
 
-  await expect(page.getByRole("heading", { name: "Sign In" })).toBeVisible();
+  await expect(page.getByRole("heading", { name: "Sign In", exact: true })).toBeVisible();
   await expect(page.getByLabel("Password")).toHaveAttribute("type", "password");
 
   await page.getByRole("button", { name: "Sign In" }).click();
