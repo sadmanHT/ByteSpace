@@ -26,6 +26,13 @@ test("Home matches the flagship Figma flow and core interactions", async ({ page
     }),
   ).toBeVisible();
 
+  const pageGeometry = await page.evaluate(() => ({
+    documentHeight: document.documentElement.scrollHeight,
+    documentWidth: document.documentElement.scrollWidth,
+  }));
+  expect(pageGeometry.documentWidth).toBe(1440);
+  expect(pageGeometry.documentHeight).toBe(6377);
+
   const hero = page.getByTestId("home-hero");
   const heroBox = await hero.boundingBox();
   expect(Math.round(heroBox?.width ?? 0)).toBe(1440);
