@@ -51,10 +51,8 @@ export function HomeHero() {
       />
 
       <aside className="bs-home-progress-card" aria-label="Learning progress">
-        <div className="bs-home-floating-card__title-row">
-          <span>Learning Progress</span>
-          <strong>55%</strong>
-        </div>
+        <span className="bs-home-progress-card__label">Learning Progress</span>
+        <strong className="bs-home-progress-card__value">55%</strong>
         <div
           aria-label="55 percent complete"
           className="bs-home-progress-card__track"
@@ -65,11 +63,10 @@ export function HomeHero() {
         >
           <span />
         </div>
-        <p>Keep going — you&apos;re making great progress.</p>
       </aside>
 
       <aside className="bs-home-students-card" aria-label="Happy students">
-        <div>
+        <div className="bs-home-students-card__copy">
           <strong>Happy Students</strong>
           <span className="bs-home-students-card__rating">
             <MaterialIcon height={18} name="star" width={18} /> 4.5 (240)
