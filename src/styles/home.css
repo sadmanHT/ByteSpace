@@ -805,6 +805,10 @@
     justify-content: center;
   }
 
+  .bs-home-decorative-orb--yellow {
+    right: 16px;
+  }
+
   .bs-home-growth {
     height: auto;
   }
