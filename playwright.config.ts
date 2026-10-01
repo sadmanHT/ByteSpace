@@ -1,6 +1,7 @@
 import { defineConfig, devices } from "@playwright/test";
 
-const baseURL = "http://localhost:3000";
+const externalBaseURL = process.env.PLAYWRIGHT_TEST_BASE_URL;
+const baseURL = externalBaseURL ?? "http://localhost:3000";
 
 export default defineConfig({
   testDir: "./tests/e2e",
@@ -30,10 +31,14 @@ export default defineConfig({
       use: { ...devices["Desktop Safari"] },
     },
   ],
-  webServer: {
-    command: process.env.CI ? "pnpm start" : "pnpm dev",
-    url: baseURL,
-    reuseExistingServer: !process.env.CI,
-    timeout: 120_000,
-  },
+  ...(externalBaseURL
+    ? {}
+    : {
+        webServer: {
+          command: process.env.CI ? "pnpm start" : "pnpm dev",
+          url: baseURL,
+          reuseExistingServer: !process.env.CI,
+          timeout: 120_000,
+        },
+      }),
 });
