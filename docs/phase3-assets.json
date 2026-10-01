@@ -1,0 +1,34 @@
+{
+  "sourceFile": "ByteSpace New Check website (Copy).fig",
+  "sourceSha256": "a5c21e6873e4a024db448e30ad30703edc797a49bf4e1da4eaa2cc2dc8a97089",
+  "assets": [
+    {
+      "figmaHash": "b44979e1c98ecb3ec92ac86805fe55581fbeaa60",
+      "sourceNode": "13:266",
+      "output": "/assets/avatars/b44979e1c98ecb3ec92ac86805fe55581fbeaa60.webp",
+      "renderedSize": 32,
+      "optimizedDerivativeSize": 64
+    },
+    {
+      "figmaHash": "3fe559181733e0fb69226caee836e40092facb44",
+      "sourceNode": "13:267",
+      "output": "/assets/avatars/3fe559181733e0fb69226caee836e40092facb44.webp",
+      "renderedSize": 32,
+      "optimizedDerivativeSize": 64
+    },
+    {
+      "figmaHash": "0577f0e9b7fca2f32639871454da0de95f951709",
+      "sourceNode": "13:268",
+      "output": "/assets/avatars/0577f0e9b7fca2f32639871454da0de95f951709.webp",
+      "renderedSize": 32,
+      "optimizedDerivativeSize": 64
+    },
+    {
+      "figmaHash": "d0cd3adb501c64c1b4cf766de6abb9fe8925fb5f",
+      "sourceNode": "13:269",
+      "output": "/assets/avatars/d0cd3adb501c64c1b4cf766de6abb9fe8925fb5f.webp",
+      "renderedSize": 32,
+      "optimizedDerivativeSize": 64
+    }
+  ]
+}

@@ -1,0 +1,74 @@
+{
+  "source": {
+    "fileName": "ByteSpace New Check website (Copy).fig",
+    "sha256": "a5c21e6873e4a024db448e30ad30703edc797a49bf4e1da4eaa2cc2dc8a97089",
+    "exportedAt": "2026-09-28T12:18:34.725Z",
+    "archiveEntries": 62,
+    "embeddedRasterAssets": 58,
+    "canvasFormat": "fig-kiwi",
+    "canvasVersion": 106,
+    "decodedNodeCount": 3658
+  },
+  "productFrames": [
+    { "id": "1:1067", "name": "Home", "width": 1440, "height": 6377 },
+    { "id": "47:351", "name": "Register", "width": 1440, "height": 1024 },
+    { "id": "49:195", "name": "Login", "width": 1440, "height": 1024 },
+    { "id": "55:117", "name": "Search Page", "width": 1440, "height": 3853 },
+    { "id": "55:4066", "name": "Course Details", "width": 1440, "height": 2717 },
+    { "id": "60:102", "name": "Course Lessons", "width": 1440, "height": 2883 },
+    { "id": "60:681", "name": "Course Reviews", "width": 1440, "height": 3449 },
+    { "id": "60:1878", "name": "Creator Profile", "width": 1440, "height": 2136 },
+    { "id": "63:252", "name": "404 Not Found", "width": 1440, "height": 1485 }
+  ],
+  "styleGuideFrames": [
+    { "id": "73:753", "name": "Colors", "width": 1280, "height": 1023 },
+    { "id": "73:1014", "name": "Layout Grid", "width": 1280, "height": 1168 },
+    { "id": "73:1039", "name": "Typhography", "width": 1280, "height": 3380 }
+  ],
+  "layoutGrid": {
+    "referenceWidth": 1440,
+    "type": "STRETCH",
+    "axis": "X",
+    "columns": 12,
+    "margin": 120,
+    "gutter": 40,
+    "contentWidth": 1200
+  },
+  "typography": {
+    "formalStyles": [
+      { "id": "76:1195", "name": "Heading L", "family": "Poppins", "style": "SemiBold", "size": 72, "lineHeight": 1.2, "letterSpacingPercent": -1 },
+      { "id": "76:1200", "name": "Heading M", "family": "Poppins", "style": "SemiBold", "size": 44, "lineHeight": 1.2, "letterSpacingPercent": -1 },
+      { "id": "77:1209", "name": "Heading S", "family": "Poppins", "style": "SemiBold", "size": 36, "lineHeight": 1.2, "letterSpacingPercent": -1 },
+      { "id": "76:1202", "name": "Heading XS", "family": "Poppins", "style": "SemiBold", "size": 20, "lineHeight": 1.2, "letterSpacingPercent": -1 },
+      { "id": "76:1193", "name": "Body L", "family": "Satoshi", "style": "Regular", "size": 18, "lineHeight": 1.6, "letterSpacingPercent": 0 },
+      { "id": "76:1194", "name": "Body M", "family": "Satoshi", "style": "Regular", "size": 16, "lineHeight": 1.6, "letterSpacingPercent": 0 },
+      { "id": "76:1203", "name": "Body S", "family": "Satoshi", "style": "Regular", "size": 14, "lineHeight": 1.6, "letterSpacingPercent": 0 },
+      { "id": "76:1198", "name": "Body XS", "family": "Satoshi", "style": "Regular", "size": 12, "lineHeight": 1.6, "letterSpacingPercent": 0 },
+      { "id": "77:1210", "name": "Label XL", "family": "Satoshi", "style": "Medium", "size": 20, "lineHeight": 1.2, "letterSpacingPercent": 0 },
+      { "id": "76:1196", "name": "Label L", "family": "Satoshi", "style": "Medium", "size": 18, "lineHeight": 1.2, "letterSpacingPercent": 0 },
+      { "id": "76:1197", "name": "Label M", "family": "Satoshi", "style": "Medium", "size": 16, "lineHeight": 1.2, "letterSpacingPercent": 0 },
+      { "id": "76:1199", "name": "Label S", "family": "Satoshi", "style": "Medium", "size": 14, "lineHeight": 1.2, "letterSpacingPercent": 0 },
+      { "id": "76:1201", "name": "Label XS", "family": "Satoshi", "style": "Medium", "size": 12, "lineHeight": 1.2, "letterSpacingPercent": 0 }
+    ],
+    "liveDesignUsage": {
+      "Satoshi Regular": 406,
+      "Satoshi Medium": 346,
+      "Poppins SemiBold": 111,
+      "Clash Display Bold": 16,
+      "Poppins Medium": 16,
+      "Satoshi Bold": 5,
+      "Poppins Regular": 4
+    }
+  },
+  "geometryFrequency": {
+    "cornerRadius": { "24": 324, "12": 40, "16": 15, "100": 7, "40": 6 },
+    "stackSpacing": { "8": 181, "24": 101, "12": 92, "16": 90, "4": 75, "-8": 35, "40": 30 },
+    "horizontalPadding": { "12": 146, "16": 74, "24": 50, "40": 9, "8": 2 },
+    "verticalPadding": { "6": 140, "12": 84, "16": 19, "8": 17, "40": 9, "18": 7, "24": 3, "2": 2 }
+  },
+  "rasterUsage": {
+    "canvasReferencedHashes": 39,
+    "productReferencedHashes": 38,
+    "productFillUsages": 292
+  }
+}

@@ -1,0 +1,66 @@
+{
+  "sourceFile": "ByteSpace New Check website (Copy).fig",
+  "sourceSha256": "a5c21e6873e4a024db448e30ad30703edc797a49bf4e1da4eaa2cc2dc8a97089",
+  "assets": [
+    {
+      "figmaHash": "29a52a24e51266edcd7d57d73392ee5fc4833220",
+      "sourceNode": "1:1796",
+      "output": "/assets/home/29a52a24e51266edcd7d57d73392ee5fc4833220.webp",
+      "role": "hero learner and editorial learner"
+    },
+    {
+      "figmaHash": "0d6596fb1df66aaf843ee85722f439fada233946",
+      "sourceNode": "34:1011",
+      "output": "/assets/home/0d6596fb1df66aaf843ee85722f439fada233946.webp",
+      "role": "creator editorial person"
+    },
+    {
+      "figmaHash": "63c4be83222c85e6c852819bc5d4b24a87a87fb6",
+      "sourceNode": "34:1190",
+      "output": "/assets/home/63c4be83222c85e6c852819bc5d4b24a87a87fb6.webp",
+      "role": "James L testimonial"
+    },
+    {
+      "figmaHash": "728c3b1d33fe647a46f9bf668322f8c1d94ed937",
+      "sourceNode": "34:1196",
+      "output": "/assets/home/728c3b1d33fe647a46f9bf668322f8c1d94ed937.webp",
+      "role": "Alex B testimonial"
+    },
+    {
+      "figmaHash": "9ef8cb329b949267cc8214b6727067c4a13af4b4",
+      "sourceNode": "1:1828",
+      "output": "/assets/avatars/9ef8cb329b949267cc8214b6727067c4a13af4b4.webp",
+      "role": "Home Happy Students avatar"
+    },
+    {
+      "figmaHash": "83fb3e04056cc892636460bee5791aa3f243854c",
+      "sourceNode": "1:1830",
+      "output": "/assets/avatars/83fb3e04056cc892636460bee5791aa3f243854c.webp",
+      "role": "Home Happy Students avatar"
+    },
+    {
+      "figmaHash": "f3cf29a8fed39589ceb38423e65b26b8d6c93123",
+      "sourceNode": "1:1831",
+      "output": "/assets/avatars/f3cf29a8fed39589ceb38423e65b26b8d6c93123.webp",
+      "role": "Home Happy Students avatar"
+    },
+    {
+      "figmaHash": "5824acacb3b76175bc84084ec18597109498f96d",
+      "sourceNode": "1:1832",
+      "output": "/assets/avatars/5824acacb3b76175bc84084ec18597109498f96d.webp",
+      "role": "Home Happy Students avatar"
+    },
+    {
+      "figmaHash": "7fdccc783264eedc4fb989984eecbc4058a219f2",
+      "sourceNode": "1:1833",
+      "output": "/assets/avatars/7fdccc783264eedc4fb989984eecbc4058a219f2.webp",
+      "role": "Home Happy Students avatar"
+    },
+    {
+      "figmaHash": "1e078348a54489bfd231d82fe1944770883c8d80",
+      "sourceNode": "1:1834",
+      "output": "/assets/avatars/1e078348a54489bfd231d82fe1944770883c8d80.webp",
+      "role": "Home Happy Students avatar"
+    }
+  ]
+}

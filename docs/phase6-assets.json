@@ -1,0 +1,41 @@
+{
+  "sourceFile": "ByteSpace New Check website (Copy).fig",
+  "sourceSha256": "a5c21e6873e4a024db448e30ad30703edc797a49bf4e1da4eaa2cc2dc8a97089",
+  "assets": [
+    {
+      "figmaHash": "8670b841eac7883ecb790f84eb349c6c01db588b",
+      "output": "/assets/auth/8670b841eac7883ecb790f84eb349c6c01db588b.webp",
+      "role": "Auth silver ring decoration"
+    },
+    {
+      "figmaHash": "f9c0e0fd05db48405aa72287b20d04b9a01feb51",
+      "output": "/assets/auth/f9c0e0fd05db48405aa72287b20d04b9a01feb51.webp",
+      "role": "Auth silver cone decoration"
+    },
+    {
+      "figmaHash": "e3b55902d605bfc37a0809e6dc6dfe61b6701897",
+      "output": "/assets/auth/e3b55902d605bfc37a0809e6dc6dfe61b6701897.webp",
+      "role": "Auth silver spring decoration"
+    },
+    {
+      "figmaHash": "24321b8894c48b04befaa9e71f204daacc40bbc4",
+      "output": "/assets/not-found/24321b8894c48b04befaa9e71f204daacc40bbc4.webp",
+      "role": "404 ring decoration"
+    },
+    {
+      "figmaHash": "6be36b89bfec399afb445a39d9bf4cb181332d48",
+      "output": "/assets/not-found/6be36b89bfec399afb445a39d9bf4cb181332d48.webp",
+      "role": "404 cone decoration"
+    },
+    {
+      "figmaHash": "d5e9c4dc379dbf3d1f6679a4423483f6766a7931",
+      "output": "/assets/not-found/d5e9c4dc379dbf3d1f6679a4423483f6766a7931.webp",
+      "role": "404 spring decoration"
+    },
+    {
+      "figmaHash": "f1057d714a93edf29b02a9dbdb4fc552fd7ab847",
+      "output": "/assets/not-found/f1057d714a93edf29b02a9dbdb4fc552fd7ab847.webp",
+      "role": "404 tube decoration"
+    }
+  ]
+}

@@ -1,0 +1,307 @@
+.bs-course-reviews__distribution-row {
+  display: grid;
+  height: 26px;
+  grid-template-columns: 12px 18px 282px 40px;
+  gap: 10px;
+  align-items: center;
+  color: var(--bs-screen-gray-700);
+  font-size: 16px;
+  line-height: 26px;
+}
+
+.bs-course-reviews__distribution-row > svg {
+  color: var(--bs-screen-footer-purple);
+}
+
+.bs-course-reviews__bar {
+  display: block;
+  width: 282px;
+  height: 8px;
+  overflow: hidden;
+  border-radius: 999px;
+  background: var(--bs-neutral-100);
+}
+
+.bs-course-reviews__bar > span {
+  display: block;
+  height: 100%;
+  border-radius: inherit;
+  background: var(--bs-screen-footer-purple);
+}
+
+.bs-course-reviews > section:nth-child(2) {
+  margin-top: 0;
+}
+
+.bs-course-reviews__filters {
+  display: flex;
+  height: 48px;
+  gap: 16px;
+  margin-top: 24px;
+}
+
+.bs-course-reviews__filters button {
+  display: inline-flex;
+  min-width: 66px;
+  height: 48px;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  border: 1px solid var(--bs-border-default);
+  border-radius: 24px;
+  background: var(--bs-white);
+  color: var(--bs-screen-gray-700);
+  padding: 12px 16px;
+  font-size: 14px;
+  font-weight: 500;
+  cursor: pointer;
+}
+
+.bs-course-reviews__filters button:first-child {
+  min-width: 97px;
+}
+
+.bs-course-reviews__filters button[aria-pressed="true"] {
+  border-color: transparent;
+  background: #ede8ff;
+  color: var(--bs-screen-footer-purple);
+}
+
+.bs-course-reviews__filters svg {
+  color: var(--bs-screen-footer-purple);
+}
+
+.bs-course-reviews__list {
+  display: grid;
+  gap: 24px;
+  margin-top: 24px;
+}
+
+.bs-course-review-card {
+  width: 723px;
+  min-height: 276px;
+  border: 1px solid #000000;
+  border-radius: 24px;
+  padding: 40px;
+}
+
+.bs-course-review-card header {
+  display: grid;
+  min-height: 100px;
+  grid-template-columns: 52px 1fr auto auto;
+  gap: 12px;
+  align-items: start;
+}
+
+.bs-course-review-card header > img {
+  border-radius: 50%;
+  object-fit: cover;
+}
+
+.bs-course-review-card__identity h3,
+.bs-course-review-card__identity p,
+.bs-course-review-card > p {
+  margin: 0;
+}
+
+.bs-course-review-card__identity h3 {
+  font-family: var(--bs-font-heading);
+  font-size: 18px;
+  font-weight: 600;
+  line-height: 22px;
+}
+
+.bs-course-review-card__identity p,
+.bs-course-review-card time {
+  color: var(--bs-screen-gray-700);
+  font-size: 16px;
+  line-height: 26px;
+}
+
+.bs-course-review-card__rating svg {
+  color: var(--bs-neutral-200);
+}
+
+.bs-course-review-card__rating svg.is-filled {
+  color: var(--bs-screen-footer-purple);
+}
+
+.bs-course-review-card > p {
+  margin-top: 24px;
+  color: var(--bs-screen-gray-700);
+  font-size: 16px;
+  line-height: 24px;
+}
+
+.bs-course-reviews__empty {
+  min-height: 276px;
+  display: grid;
+  place-items: center;
+  border: 1px solid var(--bs-border-default);
+  border-radius: 24px;
+  color: var(--bs-screen-gray-700);
+}
+
+@media (max-width: 1279px) {
+  .bs-course-detail-page--about .bs-course-body,
+  .bs-course-detail-page--lessons .bs-course-body,
+  .bs-course-detail-page--reviews .bs-course-body {
+    height: auto;
+  }
+
+  .bs-course-hero {
+    height: auto;
+    min-height: 0;
+    padding-bottom: 64px;
+  }
+
+  .bs-course-hero__summary,
+  .bs-course-media,
+  .bs-course-enrollment {
+    position: relative;
+    top: auto;
+    left: auto;
+    transform: none;
+  }
+
+  .bs-course-hero__summary {
+    width: min(100% - 48px, 1200px);
+    margin: 52px auto 0;
+  }
+
+  .bs-course-media {
+    width: min(100% - 48px, 720px);
+    margin: 48px auto 0;
+  }
+
+  .bs-course-enrollment {
+    width: min(100% - 48px, 720px);
+    height: auto;
+    margin: 32px auto 0;
+  }
+
+  .bs-course-enrollment__inner {
+    width: auto;
+  }
+
+  .bs-course-enrollment__button {
+    width: 100%;
+  }
+
+  .bs-course-body__content,
+  .bs-course-detail-page--lessons .bs-course-body__content,
+  .bs-course-detail-page--reviews .bs-course-body__content {
+    width: min(100% - 48px, 723px);
+    margin-inline: auto;
+    padding-block: 64px;
+  }
+
+  .bs-course-lessons__progress-card,
+  .bs-course-reviews__summary,
+  .bs-course-review-card {
+    width: 100%;
+  }
+
+  .bs-course-hero__decoration {
+    display: none;
+  }
+}
+
+@media (max-width: 767px) {
+  .bs-course-hero__summary {
+    width: min(100% - 32px, 1200px);
+    flex-direction: column;
+    gap: 24px;
+    margin-top: 24px;
+  }
+
+  .bs-course-hero__copy {
+    width: 100%;
+  }
+
+  .bs-course-hero__copy h1 {
+    font-size: 28px;
+    line-height: 38px;
+  }
+
+  .bs-course-hero__subtitle {
+    font-size: 18px;
+  }
+
+  .bs-course-hero__metrics {
+    height: auto;
+    flex-wrap: wrap;
+  }
+
+  .bs-course-media,
+  .bs-course-enrollment,
+  .bs-course-body__content,
+  .bs-course-detail-page--lessons .bs-course-body__content,
+  .bs-course-detail-page--reviews .bs-course-body__content {
+    width: min(100% - 32px, 723px);
+  }
+
+  .bs-course-media {
+    height: auto;
+    aspect-ratio: 720 / 479;
+  }
+
+  .bs-course-media__play {
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+  }
+
+  .bs-course-enrollment__inner {
+    margin: 24px;
+  }
+
+  .bs-course-route-nav,
+  .bs-course-about__previews,
+  .bs-course-reviews__filters {
+    height: auto;
+    flex-wrap: wrap;
+  }
+
+  .bs-course-about__previews {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+
+  .bs-course-about__previews img {
+    width: 100%;
+    height: auto;
+    aspect-ratio: 167 / 125;
+  }
+
+  .bs-course-lessons__modules li {
+    grid-template-columns: 56px minmax(0, 1fr);
+  }
+
+  .bs-course-lessons__module-number {
+    width: 56px;
+    height: 56px;
+  }
+
+  .bs-course-reviews__summary {
+    height: auto;
+    grid-template-columns: minmax(0, 1fr);
+  }
+
+  .bs-course-reviews__distribution-row {
+    grid-template-columns: 12px 18px minmax(80px, 1fr) 40px;
+  }
+
+  .bs-course-reviews__bar {
+    width: 100%;
+  }
+
+  .bs-course-review-card header {
+    grid-template-columns: 52px minmax(0, 1fr);
+  }
+
+  .bs-course-review-card__rating,
+  .bs-course-review-card time {
+    grid-column: 2;
+  }
+}

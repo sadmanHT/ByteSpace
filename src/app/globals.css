@@ -1,0 +1,61 @@
+@import url("https://fonts.googleapis.com/css2?family=Poppins:wght@400%3B500%3B600&display=swap");
+@import url("https://api.fontshare.com/v2/css?f%5B%5D=satoshi%40400%2C500%2C700&display=swap");
+@import url("https://api.fontshare.com/v2/css?f%5B%5D=clash-display%40700&display=swap");
+@import "tailwindcss";
+@import "../styles/tokens.css";
+@import "../styles/components.css";
+@import "../styles/shared-ui.css";
+@import "../styles/course.css";
+@import "../styles/home.css";
+@import "../styles/auth.css";
+@import "../styles/discovery.css";
+@import "../styles/course-detail.css";
+
+* {
+  box-sizing: border-box;
+}
+
+html {
+  background: var(--bs-surface-default);
+}
+
+body {
+  margin: 0;
+  min-height: 100vh;
+  background: var(--bs-surface-default);
+  color: var(--bs-text-primary);
+  font-family: var(--bs-font-body);
+  text-rendering: optimizeLegibility;
+  -webkit-font-smoothing: antialiased;
+}
+
+button,
+a,
+input,
+select,
+textarea {
+  font: inherit;
+}
+
+button,
+input,
+select,
+textarea {
+  color: inherit;
+}
+
+img,
+svg {
+  display: block;
+  max-width: 100%;
+}
+
+:focus-visible {
+  outline: 3px solid var(--bs-brand-primary);
+  outline-offset: 3px;
+}
+
+::selection {
+  background: var(--bs-brand-accent);
+  color: var(--bs-text-primary);
+}
