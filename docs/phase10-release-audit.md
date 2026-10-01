@@ -54,9 +54,9 @@ Release totals:
 
 The first Vercel import attempted to deploy the old <code>main</code> bootstrap commit <code>1c56b508...</code> and failed with <code>NEXT_NO_VERSION</code>. That failure was expected once it was confirmed the completed application still lived only on the feature branch.
 
-The project was then deployed from the correct release branch and exact release SHA.
+The project was then deployed from the correct release branch and exact release SHA. That was the initial production promotion used for release verification.
 
-Production deployment:
+Initial production promotion:
 
 - Vercel project: <code>bytespace</code>
 - Project ID: <code>prj_GhNxxllBqUmBhSRVAWSozbUslUeZ</code>
@@ -68,6 +68,8 @@ Production deployment:
 - Primary production alias: <code>bytespace-seven-neon.vercel.app</code>
 
 The deployment also received the project/team and feature-branch aliases without alias errors.
+
+After PR #1 was explicitly merged, Vercel production was switched to track <code>main</code>. Subsequent repository-documentation commits therefore create new production deployments from <code>main</code> while preserving the same application implementation originally validated at the release SHA above. The stable reviewer-facing alias remains <code>bytespace-seven-neon.vercel.app</code>.
 
 ## Post-deploy verification
 

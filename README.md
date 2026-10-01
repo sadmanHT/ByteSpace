@@ -22,7 +22,7 @@ Pixel-conscious UI • Accessible interactions • Typed domain architecture •
 
 ![ByteSpace home page](docs/screenshots/home.jpg)
 
-> **Production status:** live on Vercel at [bytespace-seven-neon.vercel.app](https://bytespace-seven-neon.vercel.app). The production deployment is verified against release SHA <code>ef5829c1caa076d61c00e6014a84dc2be3821cd3</code>; that implementation is merged into <code>main</code>. Direct-route smoke checks return HTTP 200 for all primary routes, the custom unknown-route experience returns HTTP 404, and Vercel reported no runtime errors during release verification.
+> **Production status:** live on Vercel at [bytespace-seven-neon.vercel.app](https://bytespace-seven-neon.vercel.app) and now deployed from <code>main</code>. The application release was originally validated at <code>ef5829c1caa076d61c00e6014a84dc2be3821cd3</code> before PR #1 merged it into <code>main</code>; later documentation-only commits redeploy the same application code. Direct-route smoke checks return HTTP 200 for all primary routes, the custom unknown-route experience returns HTTP 404, and Vercel reported no runtime errors during release verification.
 
 ---
 
@@ -50,8 +50,8 @@ The implementation emphasizes four things equally: **design fidelity**, **mainta
 | Live site                              | **[bytespace-seven-neon.vercel.app](https://bytespace-seven-neon.vercel.app)** |
 | Hosting                                | Vercel                                                                         |
 | Framework                              | Next.js 16 App Router                                                          |
-| Release source                         | <code>feature/bytespace-new</code>                                             |
-| Verified release SHA                   | <code>ef5829c1caa076d61c00e6014a84dc2be3821cd3</code>                          |
+| Current production source              | <code>main</code>                                                              |
+| Application release SHA                | <code>ef5829c1caa076d61c00e6014a84dc2be3821cd3</code>                          |
 | Main integration                       | PR #1 merged into <code>main</code>                                            |
 | Runtime environment variables          | None required                                                                  |
 | Production smoke                       | Primary routes HTTP 200; unknown route HTTP 404                                |
