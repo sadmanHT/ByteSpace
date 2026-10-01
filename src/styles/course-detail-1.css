@@ -1,4 +1,5 @@
 .bs-course-detail-page {
+  overflow-x: clip;
   background: var(--bs-white);
 }
 
