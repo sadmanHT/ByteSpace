@@ -1037,3 +1037,9 @@
     margin-top: 48px;
   }
 }
+
+@media (max-width: 340px) {
+  .bs-home-editorial__visual--course {
+    transform: scale(0.77);
+  }
+}
