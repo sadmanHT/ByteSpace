@@ -42,45 +42,11 @@ test("Phase 9 cross-browser route smoke stays stable at desktop and narrow width
       await page.goto(route, { waitUntil: "load" });
       await expect(page.locator("main").first()).toBeVisible();
 
-      const geometry = await page.evaluate(() => {
-        const viewportWidth = window.innerWidth;
-        const offenders: Array<{
-          className: string;
-          left: number;
-          right: number;
-          tag: string;
-        }> = [];
-
-        for (const element of document.querySelectorAll<HTMLElement>("body *")) {
-          const rect = element.getBoundingClientRect();
-          const crossesViewport = rect.left < 0 || rect.right > viewportWidth;
-
-          if (rect.width <= 0 || !crossesViewport) continue;
-
-          let className = "";
-          if (typeof element.className === "string") className = element.className;
-
-          offenders.push({
-            className,
-            left: Math.round(rect.left),
-            right: Math.round(rect.right),
-            tag: element.tagName.toLowerCase(),
-          });
-
-          if (offenders.length === 6) break;
-        }
-
-        return {
-          documentWidth: document.documentElement.scrollWidth,
-          offenders,
-          viewportWidth,
-        };
-      });
-
-      expect(
-        geometry.documentWidth,
-        `${route} at ${width}px overflowed: ${JSON.stringify(geometry.offenders)}`,
-      ).toBeLessThanOrEqual(geometry.viewportWidth);
+      const geometry = await page.evaluate(() => ({
+        documentWidth: document.documentElement.scrollWidth,
+        viewportWidth: window.innerWidth,
+      }));
+      expect(geometry.documentWidth).toBeLessThanOrEqual(geometry.viewportWidth);
     }
   }
 

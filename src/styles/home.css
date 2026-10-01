@@ -965,6 +965,10 @@
     width: 100%;
   }
 
+  .bs-home-growth {
+    overflow-x: clip;
+  }
+
   .bs-home-growth__inner {
     width: calc(100% - 32px);
     gap: 80px;
