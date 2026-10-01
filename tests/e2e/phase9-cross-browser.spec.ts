@@ -47,28 +47,34 @@ test("Phase 9 cross-browser route smoke stays stable at desktop and narrow width
         const offenders = Array.from(document.querySelectorAll<HTMLElement>("body *"))
           .map((element) => {
             const rect = element.getBoundingClientRect();
+            const className =
+              typeof element.className === "string"
+                ? element.className.trim().replace(/\\s+/g, ".")
+                : "";
+            const selector = element.id
+              ? `#${element.id}`
+              : `${element.tagName.toLowerCase()}${className ? `.${className}` : ""}`;
+
             return {
-              selector:
-                element.id
-                  ? `#${element.id}`
-                  : element.className && typeof element.className === "string"
-                    ? `${element.tagName.toLowerCase()}.${element.className.trim().split(/\\s+/).join(".")}`
-                    : element.tagName.toLowerCase(),
-              left: Math.round(rect.left * 10) / 10,
-              right: Math.round(rect.right * 10) / 10,
-              width: Math.round(rect.width * 10) / 10,
+              left: Math.round(rect.left),
+              right: Math.round(rect.right),
+              selector,
+              width: Math.round(rect.width),
             };
           })
-          .filter(({ left, right, width }) => width > 0 && (left < -0.5 || right > viewportWidth + 0.5))
-          .sort((a, b) => Math.max(b.right - viewportWidth, -b.left) - Math.max(a.right - viewportWidth, -a.left))
-          .slice(0, 8);
+          .filter(
+            ({ left, right, width }) =>
+              width > 0 && (left < 0 || right > viewportWidth),
+          )
+          .slice(0, 6);
 
         return {
           documentWidth: document.documentElement.scrollWidth,
-          viewportWidth,
           offenders,
+          viewportWidth,
         };
       });
+
       expect(
         geometry.documentWidth,
         `${route} at ${width}px overflowed: ${JSON.stringify(geometry.offenders)}`,
