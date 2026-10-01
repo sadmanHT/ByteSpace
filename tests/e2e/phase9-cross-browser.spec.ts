@@ -42,11 +42,37 @@ test("Phase 9 cross-browser route smoke stays stable at desktop and narrow width
       await page.goto(route, { waitUntil: "load" });
       await expect(page.locator("main").first()).toBeVisible();
 
-      const geometry = await page.evaluate(() => ({
-        documentWidth: document.documentElement.scrollWidth,
-        viewportWidth: window.innerWidth,
-      }));
-      expect(geometry.documentWidth).toBeLessThanOrEqual(geometry.viewportWidth);
+      const geometry = await page.evaluate(() => {
+        const viewportWidth = window.innerWidth;
+        const offenders = Array.from(document.querySelectorAll<HTMLElement>("body *"))
+          .map((element) => {
+            const rect = element.getBoundingClientRect();
+            return {
+              selector:
+                element.id
+                  ? `#${element.id}`
+                  : element.className && typeof element.className === "string"
+                    ? `${element.tagName.toLowerCase()}.${element.className.trim().split(/\\s+/).join(".")}`
+                    : element.tagName.toLowerCase(),
+              left: Math.round(rect.left * 10) / 10,
+              right: Math.round(rect.right * 10) / 10,
+              width: Math.round(rect.width * 10) / 10,
+            };
+          })
+          .filter(({ left, right, width }) => width > 0 && (left < -0.5 || right > viewportWidth + 0.5))
+          .sort((a, b) => Math.max(b.right - viewportWidth, -b.left) - Math.max(a.right - viewportWidth, -a.left))
+          .slice(0, 8);
+
+        return {
+          documentWidth: document.documentElement.scrollWidth,
+          viewportWidth,
+          offenders,
+        };
+      });
+      expect(
+        geometry.documentWidth,
+        `${route} at ${width}px overflowed: ${JSON.stringify(geometry.offenders)}`,
+      ).toBeLessThanOrEqual(geometry.viewportWidth);
     }
   }
 
