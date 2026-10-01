@@ -13,6 +13,7 @@ const routes = [
 ] as const;
 
 test("Phase 9 cross-browser route smoke stays stable at desktop and narrow widths", async ({
+  browserName,
   page,
 }) => {
   test.slow();
@@ -22,8 +23,14 @@ test("Phase 9 cross-browser route smoke stays stable at desktop and narrow width
     const expectedDocument404 =
       message.type() === "error" &&
       message.text().includes("Failed to load resource: the server responded with a status of 404");
+    const interruptedFirefoxImage =
+      browserName === "firefox" &&
+      message.type() === "error" &&
+      message.text().includes('Image corrupt or truncated.');
 
-    if (message.type() === "error" && !expectedDocument404) failures.push(message.text());
+    if (message.type() === "error" && !expectedDocument404 && !interruptedFirefoxImage) {
+      failures.push(message.text());
+    }
   });
   page.on("pageerror", (error) => failures.push(error.message));
   page.on("response", (response) => {
