@@ -833,6 +833,14 @@
   }
 }
 
+@media (max-width: 1024px) {
+  .bs-home-partners__inner {
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 24px;
+  }
+}
+
 @media (max-width: 767px) {
   .bs-home-hero {
     height: auto;
@@ -990,6 +998,10 @@
     right: 0;
     width: 100%;
     height: 520px;
+  }
+
+  .bs-home-decorative-orb--purple {
+    right: 48px;
   }
 
   .bs-home-stats {
