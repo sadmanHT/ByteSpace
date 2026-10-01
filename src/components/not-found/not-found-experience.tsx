@@ -6,7 +6,7 @@ import { SiteHeader } from "@/components/layout/site-header";
 
 export function NotFoundExperience() {
   return (
-    <div className="bs-not-found-page" data-testid="not-found-experience">
+    <main className="bs-not-found-page" data-testid="not-found-experience">
       <section className="bs-not-found__blue">
         <div aria-hidden="true" className="bs-not-found__grid" />
         <SiteHeader />
@@ -55,6 +55,6 @@ export function NotFoundExperience() {
       </section>
 
       <SiteFooter />
-    </div>
+    </main>
   );
 }

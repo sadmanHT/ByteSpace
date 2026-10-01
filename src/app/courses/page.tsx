@@ -1,5 +1,11 @@
+import type { Metadata } from "next";
+
 import { SearchExperience } from "@/components/discovery/search-experience";
 import { courses } from "@/data/courses";
+
+export const metadata: Metadata = {
+  title: "Courses",
+};
 
 type CoursesPageProps = {
   searchParams: Promise<{ query?: string | string[] }>;

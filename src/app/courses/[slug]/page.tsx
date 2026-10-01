@@ -1,3 +1,4 @@
+import type { Metadata } from "next";
 import Link from "next/link";
 import { notFound } from "next/navigation";
 
@@ -8,11 +9,25 @@ import { SiteHeader } from "@/components/layout/site-header";
 import { getCourseDetailBySlug } from "@/data/course-details";
 import { courses, getCourseBySlug } from "@/data/courses";
 
+type CourseDetailsPageProps = {
+  params: Promise<{ slug: string }>;
+};
+
 export function generateStaticParams() {
   return courses.map((course) => ({ slug: course.slug }));
 }
 
-export default async function CourseDetailsPage({ params }: { params: Promise<{ slug: string }> }) {
+export async function generateMetadata({ params }: CourseDetailsPageProps): Promise<Metadata> {
+  const { slug } = await params;
+  const detail = getCourseDetailBySlug(slug);
+  const course = getCourseBySlug(slug);
+
+  return {
+    title: detail?.title ?? course?.title ?? "Course",
+  };
+}
+
+export default async function CourseDetailsPage({ params }: CourseDetailsPageProps) {
   const { slug } = await params;
   const detail = getCourseDetailBySlug(slug);
 
