@@ -7,7 +7,6 @@ import { SiteHeader } from "@/components/layout/site-header";
 export function NotFoundExperience() {
   return (
     <main className="bs-not-found-page" data-testid="not-found-experience">
-      <title>Page not found | ByteSpace</title>
       <section className="bs-not-found__blue">
         <div aria-hidden="true" className="bs-not-found__grid" />
         <SiteHeader />

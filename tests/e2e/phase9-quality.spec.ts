@@ -89,8 +89,7 @@ for (const route of routes) {
 
     for (const width of viewportWidths) {
       await page.setViewportSize({ width, height: width <= 390 ? 844 : 900 });
-      await page.goto(route.path);
-      await page.waitForLoadState("networkidle");
+      await page.goto(route.path, { waitUntil: "load" });
 
       await expect(page.locator("main").first()).toBeVisible();
       await expectNoHorizontalOverflow(page);
@@ -104,8 +103,7 @@ for (const route of routes) {
       }
 
       if (width === 320) {
-        await page.reload();
-        await page.waitForLoadState("networkidle");
+        await page.reload({ waitUntil: "load" });
         await expectNoHorizontalOverflow(page);
         await expectKeyboardReachable(page);
         await expectAccessible(page);
@@ -194,8 +192,7 @@ test("Phase 9 layouts remain usable at the 720 CSS-pixel equivalent of 200% zoom
   await page.setViewportSize({ width: 720, height: 900 });
 
   for (const route of routes) {
-    await page.goto(route.path);
-    await page.waitForLoadState("networkidle");
+    await page.goto(route.path, { waitUntil: "load" });
     await expectNoHorizontalOverflow(page);
   }
 });
