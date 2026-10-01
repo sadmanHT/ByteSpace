@@ -34,7 +34,7 @@ test("Phase 8 course routes preserve the native desktop frame geometry and route
   await expect(page.getByText("$25")).toBeVisible();
   await expect(page.locator(".bs-course-enrollment")).toHaveCSS("width", "412px");
   await expect(page.locator(".bs-course-media")).toHaveCSS("width", "720px");
-  expect(await page.evaluate(() => document.documentElement.scrollHeight)).toBe(2717);
+  expect(await page.evaluate(() => document.documentElement.scrollWidth)).toBe(1440);\n  expect(await page.evaluate(() => document.documentElement.scrollHeight)).toBe(2717);
   await testInfo.attach("phase8-course-about-1440", {
     body: await page.screenshot({ fullPage: true }),
     contentType: "image/png",
