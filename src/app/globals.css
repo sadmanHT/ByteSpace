@@ -9,6 +9,7 @@
 @import "../styles/home.css";
 @import "../styles/auth.css";
 @import "../styles/discovery.css";
+@import "../styles/course-detail.css";
 
 * {
   box-sizing: border-box;
