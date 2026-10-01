@@ -40,7 +40,9 @@ export function CoursePreviewAction() {
         aria-label="Play course preview"
         className="bs-course-media__play"
         onClick={() =>
-          setMessage("The supplied design does not include a video source, so playback is unavailable.")
+          setMessage(
+            "The supplied design does not include a video source, so playback is unavailable.",
+          )
         }
         type="button"
       >
@@ -64,13 +66,20 @@ export function EnrollmentAction() {
         aria-describedby="course-enrollment-status"
         className="bs-course-enrollment__button"
         onClick={() =>
-          setMessage("Enrollment checkout is not connected because no payment backend was supplied.")
+          setMessage(
+            "Enrollment checkout is not connected because no payment backend was supplied.",
+          )
         }
         type="button"
       >
         Enroll Now
       </button>
-      <span aria-live="polite" className="bs-course-enrollment__status" id="course-enrollment-status" role="status">
+      <span
+        aria-live="polite"
+        className="bs-course-enrollment__status"
+        id="course-enrollment-status"
+        role="status"
+      >
         {message}
       </span>
     </>

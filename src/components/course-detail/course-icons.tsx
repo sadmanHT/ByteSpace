@@ -1,12 +1,6 @@
 import type { SVGProps } from "react";
 
-type CourseIconName =
-  | "check"
-  | "group"
-  | "play"
-  | "resource"
-  | "share"
-  | "star";
+type CourseIconName = "check" | "group" | "play" | "resource" | "share" | "star";
 
 const paths: Record<CourseIconName, string> = {
   check: "M9 16.17 4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41L9 16.17Z",

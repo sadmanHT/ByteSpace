@@ -19,13 +19,7 @@ export function CourseAbout({ detail }: { detail: CourseDetail }) {
         <h2 id="course-preview-images-title">Sneak Peak</h2>
         <div className="bs-course-about__previews">
           {detail.previewImages.map((image) => (
-            <Image
-              alt={image.alt}
-              height={125}
-              key={image.figmaHash}
-              src={image.src}
-              width={167}
-            />
+            <Image alt={image.alt} height={125} key={image.figmaHash} src={image.src} width={167} />
           ))}
         </div>
       </section>

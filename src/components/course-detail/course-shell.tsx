@@ -11,9 +11,18 @@ import { SiteHeader } from "@/components/layout/site-header";
 import type { CourseDetail, CourseDetailRoute } from "@/types/course-detail";
 
 const decorations = [
-  ["/assets/not-found/6be36b89bfec399afb445a39d9bf4cb181332d48.webp", "bs-course-hero__decoration--left"],
-  ["/assets/not-found/d5e9c4dc379dbf3d1f6679a4423483f6766a7931.webp", "bs-course-hero__decoration--top"],
-  ["/assets/not-found/24321b8894c48b04befaa9e71f204daacc40bbc4.webp", "bs-course-hero__decoration--right"],
+  [
+    "/assets/not-found/6be36b89bfec399afb445a39d9bf4cb181332d48.webp",
+    "bs-course-hero__decoration--left",
+  ],
+  [
+    "/assets/not-found/d5e9c4dc379dbf3d1f6679a4423483f6766a7931.webp",
+    "bs-course-hero__decoration--top",
+  ],
+  [
+    "/assets/not-found/24321b8894c48b04befaa9e71f204daacc40bbc4.webp",
+    "bs-course-hero__decoration--right",
+  ],
 ] as const;
 
 export function CourseShell({

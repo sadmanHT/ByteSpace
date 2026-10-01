@@ -18,7 +18,10 @@ const filters: ReadonlyArray<Readonly<{ label: string; value: CourseReview["rati
 
 export function CourseReviews({ detail }: { detail: CourseDetail }) {
   const [rating, setRating] = useState<CourseReview["rating"] | "all">("all");
-  const visibleReviews = useMemo(() => filterCourseReviews(detail.reviews, rating), [detail.reviews, rating]);
+  const visibleReviews = useMemo(
+    () => filterCourseReviews(detail.reviews, rating),
+    [detail.reviews, rating],
+  );
 
   return (
     <div className="bs-course-reviews">
@@ -30,7 +33,11 @@ export function CourseReviews({ detail }: { detail: CourseDetail }) {
           <div className="bs-course-reviews__aggregate">
             <span>Ratings</span>
             <strong>{detail.aggregateRating}</strong>
-            <div aria-label={`${detail.aggregateRating} out of 5 stars`} className="bs-course-reviews__stars" role="img">
+            <div
+              aria-label={`${detail.aggregateRating} out of 5 stars`}
+              className="bs-course-reviews__stars"
+              role="img"
+            >
               {Array.from({ length: 5 }, (_, index) => (
                 <CourseIcon height={18} key={index} name="star" width={18} />
               ))}
@@ -56,7 +63,11 @@ export function CourseReviews({ detail }: { detail: CourseDetail }) {
 
       <section aria-labelledby="individual-reviews-title">
         <h2 id="individual-reviews-title">Individual Reviews:</h2>
-        <div aria-label="Filter reviews by rating" className="bs-course-reviews__filters" role="group">
+        <div
+          aria-label="Filter reviews by rating"
+          className="bs-course-reviews__filters"
+          role="group"
+        >
           {filters.map((filter) => (
             <button
               aria-pressed={rating === filter.value}
@@ -82,7 +93,11 @@ export function CourseReviews({ detail }: { detail: CourseDetail }) {
                     <h3>{review.name}</h3>
                     <p>{review.role}</p>
                   </div>
-                  <div className="bs-course-review-card__rating" aria-label={`${review.rating} out of 5 stars`} role="img">
+                  <div
+                    className="bs-course-review-card__rating"
+                    aria-label={`${review.rating} out of 5 stars`}
+                    role="img"
+                  >
                     {Array.from({ length: 5 }, (_, index) => (
                       <CourseIcon
                         className={index < review.rating ? "is-filled" : ""}
