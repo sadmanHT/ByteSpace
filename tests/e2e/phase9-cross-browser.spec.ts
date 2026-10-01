@@ -26,7 +26,7 @@ test("Phase 9 cross-browser route smoke stays stable at desktop and narrow width
     const interruptedFirefoxImage =
       browserName === "firefox" &&
       message.type() === "error" &&
-      message.text().includes('Image corrupt or truncated.');
+      message.text().includes("Image corrupt or truncated.");
 
     if (message.type() === "error" && !expectedDocument404 && !interruptedFirefoxImage) {
       failures.push(message.text());
