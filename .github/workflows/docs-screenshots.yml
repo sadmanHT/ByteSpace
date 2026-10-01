@@ -2,11 +2,6 @@ name: Production Screenshots
 
 on:
   workflow_dispatch:
-    inputs:
-      base_url:
-        description: Public deployment URL to capture
-        required: false
-        default: https://bytespace-seven-neon.vercel.app
   push:
     branches:
       - main
@@ -29,7 +24,7 @@ jobs:
     timeout-minutes: 15
 
     env:
-      SITE_URL: \${{ inputs.base_url || 'https://bytespace-seven-neon.vercel.app' }}
+      SITE_URL: https://bytespace-seven-neon.vercel.app
 
     steps:
       - name: Checkout main
@@ -53,6 +48,17 @@ jobs:
 
       - name: Install dependencies
         run: pnpm install --frozen-lockfile
+
+      - name: Format repository documentation
+        run: >
+          pnpm exec prettier --write
+          README.md
+          CONTRIBUTING.md
+          SECURITY.md
+          docs/README.md
+          docs/WALKTHROUGH.md
+          docs/phase10-release-audit.md
+          .github/PULL_REQUEST_TEMPLATE.md
 
       - name: Capture production routes
         shell: bash
@@ -90,11 +96,14 @@ jobs:
               page.setDefaultNavigationTimeout(60_000);
 
               const response = await page.goto(base + path, { waitUntil: "networkidle" });
-              if (!response) throw new Error(\`No response for \${path}\`);
+              if (!response) throw new Error("No response for " + path);
+
               if (path === "/this-route-does-not-exist") {
-                if (response.status() !== 404) throw new Error(\`Expected 404 for \${path}, got \${response.status()}\`);
+                if (response.status() !== 404) {
+                  throw new Error("Expected 404 for " + path + ", got " + response.status());
+                }
               } else if (!response.ok()) {
-                throw new Error(\`Expected success for \${path}, got \${response.status()}\`);
+                throw new Error("Expected success for " + path + ", got " + response.status());
               }
 
               await page.evaluate(async () => {
@@ -109,7 +118,7 @@ jobs:
               await page.waitForTimeout(250);
 
               await page.screenshot({
-                path: \`docs/screenshots/\${name}.jpg\`,
+                path: "docs/screenshots/" + name + ".jpg",
                 type: "jpeg",
                 quality: 82,
                 fullPage: true,
@@ -122,15 +131,25 @@ jobs:
           }
           NODE
 
-      - name: Commit refreshed screenshots
+      - name: Commit refreshed documentation
         shell: bash
         run: |
           git config user.name "github-actions[bot]"
           git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
-          git add docs/screenshots/*.jpg
+          git add \
+            README.md \
+            CONTRIBUTING.md \
+            SECURITY.md \
+            docs/README.md \
+            docs/WALKTHROUGH.md \
+            docs/phase10-release-audit.md \
+            .github/PULL_REQUEST_TEMPLATE.md \
+            docs/screenshots/*.jpg
+
           if git diff --cached --quiet; then
-            echo "Screenshots are already current."
+            echo "Documentation and screenshots are already current."
             exit 0
           fi
-          git commit -m "docs: refresh production screenshots"
+
+          git commit -m "docs: refresh production screenshots and formatting"
           git push origin HEAD:main
