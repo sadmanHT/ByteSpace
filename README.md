@@ -16,7 +16,7 @@ Recorded native package SHA-256:
 
 ## Live deployment
 
-The final public Vercel URL is added during the Phase 10 deployment step.
+Production deployment is currently pending because this automation session can read the connected Vercel account but cannot create/import a new Vercel project or invoke a working deploy action. No unrelated Vercel project was modified. See `docs/phase10-release-audit.md` for the exact release blocker and completed validation evidence.
 
 ## Implemented routes
 
