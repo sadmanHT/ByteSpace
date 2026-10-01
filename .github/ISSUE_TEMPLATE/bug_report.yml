@@ -1,0 +1,70 @@
+name: Bug report
+description: Report a reproducible problem in ByteSpace
+title: "[Bug]: "
+labels:
+  - bug
+body:
+  - type: markdown
+    attributes:
+      value: |
+        Thanks for reporting a problem. Please include enough information for someone else to reproduce it.
+  - type: input
+    id: route
+    attributes:
+      label: Route / URL
+      placeholder: https://bytespace-seven-neon.vercel.app/courses
+    validations:
+      required: true
+  - type: textarea
+    id: description
+    attributes:
+      label: What happened?
+      description: Describe the observed behavior.
+    validations:
+      required: true
+  - type: textarea
+    id: reproduce
+    attributes:
+      label: Steps to reproduce
+      placeholder: |
+        1. Open ...
+        2. Click ...
+        3. Observe ...
+    validations:
+      required: true
+  - type: textarea
+    id: expected
+    attributes:
+      label: Expected behavior
+    validations:
+      required: true
+  - type: dropdown
+    id: browser
+    attributes:
+      label: Browser
+      options:
+        - Chrome / Chromium
+        - Firefox
+        - Safari / WebKit
+        - Other
+    validations:
+      required: true
+  - type: input
+    id: viewport
+    attributes:
+      label: Viewport / device
+      placeholder: Desktop 1440px, iPhone, 390px wide, etc.
+  - type: textarea
+    id: evidence
+    attributes:
+      label: Screenshots / console output
+      description: Drag screenshots here and include relevant console errors if available.
+  - type: checkboxes
+    id: checks
+    attributes:
+      label: Pre-submission checks
+      options:
+        - label: I checked for an existing issue describing the same problem.
+          required: true
+        - label: This report does not contain credentials or sensitive security details.
+          required: true

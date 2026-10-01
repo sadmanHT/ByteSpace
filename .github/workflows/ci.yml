@@ -3,6 +3,7 @@ name: Quality Gate
 on:
   push:
     branches:
+      - main
       - feature/bytespace-new
   pull_request:
     branches:
@@ -12,7 +13,7 @@ permissions:
   contents: read
 
 concurrency:
-  group: quality-${{ github.workflow }}-${{ github.ref }}
+  group: quality-\${{ github.workflow }}-\${{ github.ref }}
   cancel-in-progress: true
 
 jobs:

@@ -1,0 +1,34 @@
+name: Feature request
+description: Propose an improvement to the ByteSpace product or developer experience
+title: "[Feature]: "
+labels:
+  - enhancement
+body:
+  - type: textarea
+    id: problem
+    attributes:
+      label: Problem / opportunity
+      description: What user or engineering problem should this solve?
+    validations:
+      required: true
+  - type: textarea
+    id: proposal
+    attributes:
+      label: Proposed solution
+      description: Describe the desired behavior without prescribing implementation details unless needed.
+    validations:
+      required: true
+  - type: textarea
+    id: design
+    attributes:
+      label: Design / route impact
+      description: Which routes or UI surfaces would change? Include references or sketches when useful.
+  - type: textarea
+    id: accessibility
+    attributes:
+      label: Accessibility considerations
+      description: Note keyboard, semantics, focus, contrast, motion, or responsive considerations.
+  - type: textarea
+    id: alternatives
+    attributes:
+      label: Alternatives considered

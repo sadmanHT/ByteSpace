@@ -1,0 +1,136 @@
+name: Production Screenshots
+
+on:
+  workflow_dispatch:
+    inputs:
+      base_url:
+        description: Public deployment URL to capture
+        required: false
+        default: https://bytespace-seven-neon.vercel.app
+  push:
+    branches:
+      - main
+    paths:
+      - .github/workflows/docs-screenshots.yml
+
+permissions:
+  contents: write
+
+concurrency:
+  group: production-screenshots
+  cancel-in-progress: true
+
+jobs:
+  capture:
+    runs-on: ubuntu-latest
+    container:
+      image: mcr.microsoft.com/playwright:v1.63.0-noble
+      options: --user 1001
+    timeout-minutes: 15
+
+    env:
+      SITE_URL: \${{ inputs.base_url || 'https://bytespace-seven-neon.vercel.app' }}
+
+    steps:
+      - name: Checkout main
+        uses: actions/checkout@v6
+        with:
+          ref: main
+          persist-credentials: true
+
+      - name: Set up pnpm
+        uses: pnpm/action-setup@v6.0.9
+        with:
+          version: 12.7.0
+          run_install: false
+
+      - name: Set up Node.js
+        uses: actions/setup-node@v7
+        with:
+          node-version: 22
+          cache: pnpm
+          cache-dependency-path: pnpm-lock.yaml
+
+      - name: Install dependencies
+        run: pnpm install --frozen-lockfile
+
+      - name: Capture production routes
+        shell: bash
+        run: |
+          mkdir -p docs/screenshots
+          node --input-type=module <<'NODE'
+          import { chromium } from "@playwright/test";
+          import fs from "node:fs";
+
+          const base = process.env.SITE_URL.replace(/\/$/, "");
+          const routes = [
+            ["home", "/", { width: 1440, height: 1000 }],
+            ["register", "/register", { width: 1440, height: 1024 }],
+            ["login", "/login", { width: 1440, height: 1024 }],
+            ["courses", "/courses", { width: 1440, height: 1000 }],
+            ["course-about", "/courses/build-digital-asset", { width: 1440, height: 1000 }],
+            ["course-lessons", "/courses/build-digital-asset/lessons", { width: 1440, height: 1000 }],
+            ["course-reviews", "/courses/build-digital-asset/reviews", { width: 1440, height: 1000 }],
+            ["creator-profile", "/creators/purepearl-studio", { width: 1440, height: 1000 }],
+            ["not-found", "/this-route-does-not-exist", { width: 1440, height: 960 }],
+            ["mobile-course", "/courses/build-digital-asset", { width: 390, height: 844 }],
+          ];
+
+          fs.mkdirSync("docs/screenshots", { recursive: true });
+
+          const browser = await chromium.launch();
+          try {
+            for (const [name, path, viewport] of routes) {
+              const context = await browser.newContext({
+                viewport,
+                deviceScaleFactor: 1,
+                reducedMotion: "reduce",
+              });
+              const page = await context.newPage();
+              page.setDefaultNavigationTimeout(60_000);
+
+              const response = await page.goto(base + path, { waitUntil: "networkidle" });
+              if (!response) throw new Error(\`No response for \${path}\`);
+              if (path === "/this-route-does-not-exist") {
+                if (response.status() !== 404) throw new Error(\`Expected 404 for \${path}, got \${response.status()}\`);
+              } else if (!response.ok()) {
+                throw new Error(\`Expected success for \${path}, got \${response.status()}\`);
+              }
+
+              await page.evaluate(async () => {
+                if (document.fonts?.ready) await document.fonts.ready;
+                const step = Math.max(500, Math.floor(window.innerHeight * 0.8));
+                for (let y = 0; y < document.documentElement.scrollHeight; y += step) {
+                  window.scrollTo(0, y);
+                  await new Promise((resolve) => setTimeout(resolve, 35));
+                }
+                window.scrollTo(0, 0);
+              });
+              await page.waitForTimeout(250);
+
+              await page.screenshot({
+                path: \`docs/screenshots/\${name}.jpg\`,
+                type: "jpeg",
+                quality: 82,
+                fullPage: true,
+              });
+
+              await context.close();
+            }
+          } finally {
+            await browser.close();
+          }
+          NODE
+
+      - name: Commit refreshed screenshots
+        shell: bash
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add docs/screenshots/*.jpg
+          if git diff --cached --quiet; then
+            echo "Screenshots are already current."
+            exit 0
+          fi
+          git commit -m "docs: refresh production screenshots"
+          git push origin HEAD:main

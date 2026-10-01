@@ -1,0 +1,8 @@
+blank_issues_enabled: false
+contact_links:
+  - name: Production site
+    url: https://bytespace-seven-neon.vercel.app
+    about: Verify the current deployed behavior before opening an issue.
+  - name: Security reporting
+    url: https://github.com/sadmanHT/ByteSpace/security
+    about: Use a private security channel for vulnerabilities; do not publish sensitive details in an issue.

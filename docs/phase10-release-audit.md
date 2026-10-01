@@ -1,152 +1,127 @@
 # Phase 10 — Release, PR, and Vercel Handoff Audit
 
-## Release freeze
+## Final status
 
-Phase 10 started only after Phase 9 completed with a green full-route responsive, accessibility, production-build, and cross-browser gate.
+Phase 10 is complete.
 
-No new product features were added during this phase. Release work was limited to documentation, test/deployment configurability, CI/release hygiene, pull-request preparation, and deployment attempts.
+- Application quality gate: **PASS**
+- Pull request: **MERGED by explicit user request**
+- Production Vercel deployment: **READY**
+- Public URL: **https://bytespace-seven-neon.vercel.app**
+- Required runtime environment variables: **none**
+- Production runtime errors during release verification: **none reported**
 
 ## Release candidate
 
-- Branch: `feature/bytespace-new`
-- Release-prep HEAD validated by CI: `4effd06c6f05f50c60f8418ffcc9155b2ed3f890`
-- Base branch: `main`
-- Branch status at release review: 123 commits ahead, 0 behind
-- Changed files versus `main`: 178
-- Required runtime environment variables: none
+The final release implementation was produced on:
 
-The branch remains separate from `main`. It must not be merged unless explicitly requested.
+- Branch: <code>feature/bytespace-new</code>
+- Final release HEAD: <code>ef5829c1caa076d61c00e6014a84dc2be3821cd3</code>
+- Final release commit message: <code>docs: record phase 10 release handoff</code>
 
-## Final release validation
+Pull request #1 targeted <code>main</code> and remained unmerged until the user explicitly requested that the completed professional project be placed on <code>main</code>.
 
-GitHub Actions Quality Gate:
+The PR was then merged with merge commit:
 
-- Run ID: `36889612907`
-- Result: success
-- Validated HEAD: `4effd06c6f05f50c60f8418ffcc9155b2ed3f890`
+<code>1294428f0b05e075894de53733fa4c628a19ceca</code>
 
-Passing results:
+## CI validation
 
-- 23 test files
+The feature-branch release and pull-request gates completed successfully.
+
+Final PR-triggered Quality Gate:
+
+- Run ID: <code>36896960530</code>
+- Event: <code>pull_request</code>
+- Head SHA: <code>ef5829c1caa076d61c00e6014a84dc2be3821cd3</code>
+- Result: **success**
+
+Release totals:
+
+- 23 Vitest/RTL test files
 - 50 unit/component tests
 - 34 Playwright tests
-- production build compiled successfully
-- 19 application pages/routes generated
+- production build passed
 - Chromium responsive matrix passed
-- Firefox cross-browser smoke passed
-- WebKit cross-browser smoke passed
-- accessibility, keyboard, navigation, console/network, and overflow coverage passed
+- Firefox route smoke passed
+- WebKit route smoke passed
+- axe accessibility checks passed
+- keyboard/navigation checks passed
+- console/network checks passed
+- overflow/narrow-layout checks passed
 
-The previous Phase 9 evidence remains in `docs/phase9-responsive-accessibility-performance-audit.md`.
+## Vercel deployment
 
-## Release documentation and testability
+The first Vercel import attempted to deploy the old <code>main</code> bootstrap commit <code>1c56b508...</code> and failed with <code>NEXT_NO_VERSION</code>. That failure was expected once it was confirmed the completed application still lived only on the feature branch.
 
-Phase 10 finalized the README to document:
+The project was then deployed from the correct release branch and exact release SHA.
 
-- design source and native-Figma workflow,
-- implemented product routes,
-- stack and architecture,
-- install/development/quality commands,
-- testing totals and QA matrix,
-- frontend-only backend boundaries,
-- accessibility approach,
-- asset/font strategy,
-- environment-variable status,
-- branch/PR workflow,
-- audit evidence.
+Production deployment:
 
-`playwright.config.ts` now accepts `PLAYWRIGHT_TEST_BASE_URL`. When this variable is supplied, Playwright tests an already-deployed environment and does not start a local Next.js server.
+- Vercel project: <code>bytespace</code>
+- Project ID: <code>prj_GhNxxllBqUmBhSRVAWSozbUslUeZ</code>
+- Deployment ID: <code>dpl_2JGFSpk3HHNLEDdNB5PW7Q5eg5GU</code>
+- State: <code>READY</code>
+- Target: <code>production</code>
+- Source branch: <code>feature/bytespace-new</code>
+- Source SHA: <code>ef5829c1caa076d61c00e6014a84dc2be3821cd3</code>
+- Primary production alias: <code>bytespace-seven-neon.vercel.app</code>
 
-Example:
+The deployment also received the project/team and feature-branch aliases without alias errors.
 
-```bash
-PLAYWRIGHT_TEST_BASE_URL=https://deployment.example pnpm test:e2e
-```
+## Post-deploy verification
 
-## Repository hygiene
+The public production alias was fetched directly and returned the expected ByteSpace HTML with HTTP 200.
 
-Release review confirmed:
+Direct-route checks:
 
-- no required secret/runtime environment variables,
-- `.env.example` documents the empty runtime-variable contract,
-- local secret files remain ignored,
-- Playwright/test reports and Vercel local metadata remain ignored,
-- fixture/debug routes are intentional automated design-verification surfaces,
-- no final PR merge is automated,
-- the feature branch is not behind `main`.
+| Route | Expected | Verified |
+| --- | ---: | ---: |
+| <code>/</code> | 200 | 200 |
+| <code>/register</code> | 200 | 200 |
+| <code>/login</code> | 200 | 200 |
+| <code>/courses</code> | 200 | 200 |
+| <code>/courses/build-digital-asset</code> | 200 | 200 |
+| <code>/courses/build-digital-asset/lessons</code> | 200 | 200 |
+| <code>/courses/build-digital-asset/reviews</code> | 200 | 200 |
+| <code>/creators/purepearl-studio</code> | 200 | 200 |
+| random unknown path | 404 | 404 |
 
-## Vercel deployment attempt
+Vercel runtime-error inspection returned no runtime error clusters in the release verification window.
 
-A production deployment was attempted through the connected Vercel integration.
+## Repository release documentation
 
-Connected-account discovery succeeded and showed existing Vercel projects, but none corresponded to ByteSpace.
+The production repository now includes:
 
-The release automation intentionally did **not** modify or reuse any unrelated existing Vercel project.
+- a production-oriented README,
+- a route-by-route walkthrough,
+- production screenshots generated from the live deployment,
+- contributor guidance,
+- security reporting guidance,
+- pull-request and issue templates,
+- CODEOWNERS,
+- CI on <code>main</code>,
+- a reproducible production screenshot workflow,
+- this completed release audit.
 
-### Blocker
+The Playwright configuration continues to support validation against an already deployed URL:
 
-The Vercel integration available in this session exposes account/project/deployment read and observability operations, but no working create-project/import-repository deployment path:
-
-1. The advertised direct deploy action fails at runtime because the server-side deployment tool is unavailable.
-2. No create-project/import-Git-repository action is exposed by the connected Vercel integration.
-3. The Vercel CLI fallback requires a Vercel token plus Vercel organization/project identifiers. Those credentials/bindings are not available to this session and must not be fabricated or committed.
-4. There is no pre-existing ByteSpace Vercel project that can be safely promoted or redeployed.
-
-Therefore no public Vercel URL is claimed in this audit.
-
-This is an execution-environment/tooling blocker, not an application build failure. The release candidate itself passes the full local/CI quality gate.
-
-## Safe Vercel handoff
-
-To complete deployment without changing application code:
-
-1. In Vercel, create/import a new project from `sadmanHT/ByteSpace`.
-2. Select the `feature/bytespace-new` branch for the release candidate, or merge only after explicit approval and deploy `main`.
-3. Framework should auto-detect as Next.js.
-4. No runtime environment variables are required.
-5. Deploy the exact release candidate.
-6. Confirm the deployment is public and Vercel Authentication/Deployment Protection is not blocking reviewers.
-7. Run:
-   ```bash
-   PLAYWRIGHT_TEST_BASE_URL=https://<public-vercel-url> pnpm test:e2e
-   ```
-8. Verify direct refresh for:
-   - `/`
-   - `/register`
-   - `/login`
-   - `/courses`
-   - `/courses/build-digital-asset`
-   - `/courses/build-digital-asset/lessons`
-   - `/courses/build-digital-asset/reviews`
-   - `/creators/purepearl-studio`
-   - a random unknown path for the custom 404
-9. Check Vercel runtime errors/logs after the smoke pass.
-10. Replace the README deployment note with the public production URL.
-
-## Pull request status
-
-The final pull request is created from `feature/bytespace-new` into `main` during this release handoff.
-
-The PR must remain unmerged until explicitly requested.
+~~~bash
+PLAYWRIGHT_TEST_BASE_URL=https://bytespace-seven-neon.vercel.app pnpm test:e2e
+~~~
 
 ## Known product boundaries
 
-These remain deliberate, documented frontend-only boundaries rather than release defects:
+These are deliberate frontend-only boundaries rather than release defects:
 
-- authentication is validation-only,
+- authentication is validation-only and creates no fake session/JWT,
 - enrollment/payment does not simulate checkout success,
 - Follow is local-only state,
 - learning progress is supplied fixture/display data,
 - newsletter interaction is frontend-only,
-- video preview does not claim playback without a supplied source,
+- media preview does not claim playback without a supplied source,
 - Share uses real Web Share when available and clipboard fallback otherwise.
 
-## Release status
+## Release outcome
 
-Application quality gate: **PASS**
-
-Pull request: **prepared/created during Phase 10**
-
-Public Vercel deployment: **BLOCKED by unavailable deployment write capability in the connected execution environment**
-
-No unrelated Vercel project was modified, and no deployment URL has been fabricated.
+The ByteSpace frontend passed its automated release gate, was deployed publicly to Vercel, verified route-by-route, merged into <code>main</code> on explicit request, and documented for maintainers and reviewers.
