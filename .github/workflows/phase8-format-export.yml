@@ -1,0 +1,50 @@
+name: Phase 8 Format Export
+
+on:
+  push:
+    branches:
+      - feature/bytespace-new
+
+permissions:
+  contents: write
+
+jobs:
+  format:
+    if: github.actor != 'github-actions[bot]'
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v6
+        with:
+          ref: feature/bytespace-new
+
+      - name: Set up pnpm
+        uses: pnpm/action-setup@v6.0.9
+        with:
+          version: 12.7.0
+          run_install: false
+
+      - name: Set up Node.js
+        uses: actions/setup-node@v7
+        with:
+          node-version: 22
+          cache: pnpm
+          cache-dependency-path: pnpm-lock.yaml
+
+      - name: Install dependencies
+        run: pnpm install --frozen-lockfile
+
+      - name: Format Phase 8 files
+        run: pnpm exec prettier --write src/app/courses/[slug]/page.tsx src/components/course-detail/course-about.tsx src/components/course-detail/course-actions.tsx src/components/course-detail/course-icons.tsx src/components/course-detail/course-reviews.tsx src/components/course-detail/course-shell.tsx src/data/course-details.ts tests/e2e/phase8-course-detail.spec.ts
+
+      - name: Commit formatting
+        run: |
+          if git diff --quiet; then
+            echo "No formatting changes required."
+            exit 0
+          fi
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add src/app/courses/[slug]/page.tsx src/components/course-detail/course-about.tsx src/components/course-detail/course-actions.tsx src/components/course-detail/course-icons.tsx src/components/course-detail/course-reviews.tsx src/components/course-detail/course-shell.tsx src/data/course-details.ts tests/e2e/phase8-course-detail.spec.ts
+          git commit -m "style: format phase 8 course detail files"
+          git push origin HEAD:feature/bytespace-new
