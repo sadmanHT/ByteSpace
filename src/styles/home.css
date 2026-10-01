@@ -951,8 +951,8 @@
   }
 
   .bs-home-course-grid {
-    grid-template-columns: minmax(0, 373px);
-    justify-content: center;
+    grid-template-columns: minmax(0, 1fr);
+    justify-items: center;
     gap: 24px;
   }
 
