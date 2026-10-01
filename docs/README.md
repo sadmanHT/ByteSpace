@@ -4,19 +4,19 @@ The documentation in this directory records design provenance, implementation de
 
 ## Start here
 
-| Document | Purpose |
-| --- | --- |
-| [Production walkthrough](WALKTHROUGH.md) | Route-by-route tour of the deployed application with screenshots |
-| [Design system](design-system.md) | Visual tokens and native-Figma-derived design rules |
-| [Asset inventory](asset-inventory.md) | Localized image provenance and asset-handling policy |
-| [Shared UI audit](shared-ui-audit.md) | Shared shell and reusable UI verification |
-| [Course catalogue audit](course-catalog-audit.md) | Course cards, domain data, discovery behavior |
-| [Home page audit](home-page-audit.md) | Home composition and fidelity notes |
-| [Auth + 404 audit](phase6-auth-404-audit.md) | Authentication surfaces and not-found route |
-| [Search + creator audit](phase7-search-creator-audit.md) | Search/discovery and creator profile |
-| [Course detail audit](phase8-course-detail-audit.md) | About/Lessons/Reviews ecosystem |
+| Document                                                                                           | Purpose                                                                  |
+| -------------------------------------------------------------------------------------------------- | ------------------------------------------------------------------------ |
+| [Production walkthrough](WALKTHROUGH.md)                                                           | Route-by-route tour of the deployed application with screenshots         |
+| [Design system](design-system.md)                                                                  | Visual tokens and native-Figma-derived design rules                      |
+| [Asset inventory](asset-inventory.md)                                                              | Localized image provenance and asset-handling policy                     |
+| [Shared UI audit](shared-ui-audit.md)                                                              | Shared shell and reusable UI verification                                |
+| [Course catalogue audit](course-catalog-audit.md)                                                  | Course cards, domain data, discovery behavior                            |
+| [Home page audit](home-page-audit.md)                                                              | Home composition and fidelity notes                                      |
+| [Auth + 404 audit](phase6-auth-404-audit.md)                                                       | Authentication surfaces and not-found route                              |
+| [Search + creator audit](phase7-search-creator-audit.md)                                           | Search/discovery and creator profile                                     |
+| [Course detail audit](phase8-course-detail-audit.md)                                               | About/Lessons/Reviews ecosystem                                          |
 | [Responsive/accessibility/performance audit](phase9-responsive-accessibility-performance-audit.md) | Final cross-browser, responsive, a11y, console/network and overflow gate |
-| [Release audit](phase10-release-audit.md) | CI, PR, Vercel production deployment and post-deploy verification |
+| [Release audit](phase10-release-audit.md)                                                          | CI, PR, Vercel production deployment and post-deploy verification        |
 
 ## Native design evidence
 

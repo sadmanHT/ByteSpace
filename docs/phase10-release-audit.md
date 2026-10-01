@@ -75,17 +75,17 @@ The public production alias was fetched directly and returned the expected ByteS
 
 Direct-route checks:
 
-| Route | Expected | Verified |
-| --- | ---: | ---: |
-| <code>/</code> | 200 | 200 |
-| <code>/register</code> | 200 | 200 |
-| <code>/login</code> | 200 | 200 |
-| <code>/courses</code> | 200 | 200 |
-| <code>/courses/build-digital-asset</code> | 200 | 200 |
-| <code>/courses/build-digital-asset/lessons</code> | 200 | 200 |
-| <code>/courses/build-digital-asset/reviews</code> | 200 | 200 |
-| <code>/creators/purepearl-studio</code> | 200 | 200 |
-| random unknown path | 404 | 404 |
+| Route                                             | Expected | Verified |
+| ------------------------------------------------- | -------: | -------: |
+| <code>/</code>                                    |      200 |      200 |
+| <code>/register</code>                            |      200 |      200 |
+| <code>/login</code>                               |      200 |      200 |
+| <code>/courses</code>                             |      200 |      200 |
+| <code>/courses/build-digital-asset</code>         |      200 |      200 |
+| <code>/courses/build-digital-asset/lessons</code> |      200 |      200 |
+| <code>/courses/build-digital-asset/reviews</code> |      200 |      200 |
+| <code>/creators/purepearl-studio</code>           |      200 |      200 |
+| random unknown path                               |      404 |      404 |
 
 Vercel runtime-error inspection returned no runtime error clusters in the release verification window.
 
@@ -106,9 +106,9 @@ The production repository now includes:
 
 The Playwright configuration continues to support validation against an already deployed URL:
 
-~~~bash
+```bash
 PLAYWRIGHT_TEST_BASE_URL=https://bytespace-seven-neon.vercel.app pnpm test:e2e
-~~~
+```
 
 ## Known product boundaries
 

@@ -45,17 +45,17 @@ The implementation emphasizes four things equally: **design fidelity**, **mainta
 
 ## Production
 
-| Item | Value |
-| --- | --- |
-| Live site | **[bytespace-seven-neon.vercel.app](https://bytespace-seven-neon.vercel.app)** |
-| Hosting | Vercel |
-| Framework | Next.js 16 App Router |
-| Release source | <code>feature/bytespace-new</code> |
-| Verified release SHA | <code>ef5829c1caa076d61c00e6014a84dc2be3821cd3</code> |
-| Main integration | PR #1 merged into <code>main</code> |
-| Runtime environment variables | None required |
-| Production smoke | Primary routes HTTP 200; unknown route HTTP 404 |
-| Runtime errors at release verification | None reported |
+| Item                                   | Value                                                                          |
+| -------------------------------------- | ------------------------------------------------------------------------------ |
+| Live site                              | **[bytespace-seven-neon.vercel.app](https://bytespace-seven-neon.vercel.app)** |
+| Hosting                                | Vercel                                                                         |
+| Framework                              | Next.js 16 App Router                                                          |
+| Release source                         | <code>feature/bytespace-new</code>                                             |
+| Verified release SHA                   | <code>ef5829c1caa076d61c00e6014a84dc2be3821cd3</code>                          |
+| Main integration                       | PR #1 merged into <code>main</code>                                            |
+| Runtime environment variables          | None required                                                                  |
+| Production smoke                       | Primary routes HTTP 200; unknown route HTTP 404                                |
+| Runtime errors at release verification | None reported                                                                  |
 
 ---
 
@@ -63,17 +63,17 @@ The implementation emphasizes four things equally: **design fidelity**, **mainta
 
 Every major screen is available as a direct production route. The screenshots below are refreshed from the public deployment by the repository's manual/initial documentation screenshot workflow.
 
-| Experience | Production route | What it demonstrates |
-| --- | --- | --- |
-| Home | [<code>/</code>](https://bytespace-seven-neon.vercel.app/) | Hero, course discovery, categories, social proof, learning paths, creator/learner editorial sections |
-| Register | [<code>/register</code>](https://bytespace-seven-neon.vercel.app/register) | Accessible account-creation form and validation boundary |
-| Login | [<code>/login</code>](https://bytespace-seven-neon.vercel.app/login) | Accessible sign-in form and local validation |
-| Courses | [<code>/courses</code>](https://bytespace-seven-neon.vercel.app/courses) | Search, filtering, sorting, pagination, reusable course cards |
-| Course overview | [<code>/courses/build-digital-asset</code>](https://bytespace-seven-neon.vercel.app/courses/build-digital-asset) | Course media, metadata, creator, enrollment boundary, overview content |
-| Lessons | [<code>/courses/build-digital-asset/lessons</code>](https://bytespace-seven-neon.vercel.app/courses/build-digital-asset/lessons) | Route-backed lesson/module navigation |
-| Reviews | [<code>/courses/build-digital-asset/reviews</code>](https://bytespace-seven-neon.vercel.app/courses/build-digital-asset/reviews) | Review summary, filtering, reviewer content |
-| Creator | [<code>/creators/purepearl-studio</code>](https://bytespace-seven-neon.vercel.app/creators/purepearl-studio) | Creator identity, local follow state, published-course catalogue |
-| Not found | [example unknown route](https://bytespace-seven-neon.vercel.app/this-route-does-not-exist) | Custom 404 experience with real HTTP 404 semantics |
+| Experience      | Production route                                                                                                                 | What it demonstrates                                                                                 |
+| --------------- | -------------------------------------------------------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------------------------- |
+| Home            | [<code>/</code>](https://bytespace-seven-neon.vercel.app/)                                                                       | Hero, course discovery, categories, social proof, learning paths, creator/learner editorial sections |
+| Register        | [<code>/register</code>](https://bytespace-seven-neon.vercel.app/register)                                                       | Accessible account-creation form and validation boundary                                             |
+| Login           | [<code>/login</code>](https://bytespace-seven-neon.vercel.app/login)                                                             | Accessible sign-in form and local validation                                                         |
+| Courses         | [<code>/courses</code>](https://bytespace-seven-neon.vercel.app/courses)                                                         | Search, filtering, sorting, pagination, reusable course cards                                        |
+| Course overview | [<code>/courses/build-digital-asset</code>](https://bytespace-seven-neon.vercel.app/courses/build-digital-asset)                 | Course media, metadata, creator, enrollment boundary, overview content                               |
+| Lessons         | [<code>/courses/build-digital-asset/lessons</code>](https://bytespace-seven-neon.vercel.app/courses/build-digital-asset/lessons) | Route-backed lesson/module navigation                                                                |
+| Reviews         | [<code>/courses/build-digital-asset/reviews</code>](https://bytespace-seven-neon.vercel.app/courses/build-digital-asset/reviews) | Review summary, filtering, reviewer content                                                          |
+| Creator         | [<code>/creators/purepearl-studio</code>](https://bytespace-seven-neon.vercel.app/creators/purepearl-studio)                     | Creator identity, local follow state, published-course catalogue                                     |
+| Not found       | [example unknown route](https://bytespace-seven-neon.vercel.app/this-route-does-not-exist)                                       | Custom 404 experience with real HTTP 404 semantics                                                   |
 
 ### Home
 
@@ -131,8 +131,8 @@ Creator profiles combine identity, audience context, local follow interaction, a
 
 Authentication is intentionally frontend-only because no backend contract was supplied. Forms provide accessible validation and interaction without fabricating sessions, tokens, or successful authentication.
 
-| Register | Sign in |
-| --- | --- |
+| Register                                             | Sign in                                        |
+| ---------------------------------------------------- | ---------------------------------------------- |
 | ![ByteSpace register](docs/screenshots/register.jpg) | ![ByteSpace login](docs/screenshots/login.jpg) |
 
 </details>
@@ -158,7 +158,7 @@ For a screen-by-screen narrative, see **[docs/WALKTHROUGH.md](docs/WALKTHROUGH.m
 
 ## Architecture
 
-~~~mermaid
+```mermaid
 flowchart LR
     A[Next.js App Router] --> B[Route composition]
     B --> C[Shared layout and UI]
@@ -170,13 +170,13 @@ flowchart LR
     C --> I[Semantic design tokens + responsive CSS]
     B --> J[Client islands only where interaction is required]
     J --> K[Forms / follow / share / review filters]
-~~~
+```
 
 The application keeps page composition, presentation, domain data, and interaction utilities deliberately separate so a future API can replace fixture data without a presentation rewrite.
 
 ### Repository structure
 
-~~~text
+```text
 .
 ├── .github/
 │   ├── ISSUE_TEMPLATE/
@@ -206,24 +206,24 @@ The application keeps page composition, presentation, domain data, and interacti
 │   └── types/
 └── tests/
     └── e2e/
-~~~
+```
 
 ---
 
 ## Technology stack
 
-| Layer | Technology |
-| --- | --- |
-| Application | Next.js 16.3.6, React 19.3 |
-| Language | TypeScript 6 in strict mode |
-| Styling | Tailwind CSS 4 + design-specific CSS |
-| Package manager | pnpm 12.7 |
-| Unit/component testing | Vitest 5 + React Testing Library |
-| E2E/browser testing | Playwright 1.63 |
-| Accessibility automation | axe-core through Playwright |
-| Formatting/linting | Prettier 3 + ESLint 9 |
-| CI | GitHub Actions |
-| Deployment | Vercel |
+| Layer                    | Technology                           |
+| ------------------------ | ------------------------------------ |
+| Application              | Next.js 16.3.6, React 19.3           |
+| Language                 | TypeScript 6 in strict mode          |
+| Styling                  | Tailwind CSS 4 + design-specific CSS |
+| Package manager          | pnpm 12.7                            |
+| Unit/component testing   | Vitest 5 + React Testing Library     |
+| E2E/browser testing      | Playwright 1.63                      |
+| Accessibility automation | axe-core through Playwright          |
+| Formatting/linting       | Prettier 3 + ESLint 9                |
+| CI                       | GitHub Actions                       |
+| Deployment               | Vercel                               |
 
 ---
 
@@ -236,15 +236,15 @@ The application keeps page composition, presentation, domain data, and interacti
 
 ### Install
 
-~~~bash
+```bash
 pnpm install --frozen-lockfile
-~~~
+```
 
 ### Run locally
 
-~~~bash
+```bash
 pnpm dev
-~~~
+```
 
 Open [http://localhost:3000](http://localhost:3000).
 
@@ -254,23 +254,23 @@ No runtime environment variables are required for the current frontend implement
 
 ## Available commands
 
-| Command | Purpose |
-| --- | --- |
-| <code>pnpm dev</code> | Start the Next.js development server |
-| <code>pnpm build</code> | Create a production build |
-| <code>pnpm start</code> | Serve the production build |
-| <code>pnpm format:check</code> | Check Prettier formatting |
-| <code>pnpm lint</code> | Run ESLint with zero warnings allowed |
-| <code>pnpm typecheck</code> | Run TypeScript without emitting files |
-| <code>pnpm test</code> | Run Vitest unit/component tests |
-| <code>pnpm test:e2e</code> | Run Playwright E2E, accessibility, responsive, and cross-browser tests |
-| <code>pnpm test:e2e:ui</code> | Open Playwright UI mode |
+| Command                        | Purpose                                                                |
+| ------------------------------ | ---------------------------------------------------------------------- |
+| <code>pnpm dev</code>          | Start the Next.js development server                                   |
+| <code>pnpm build</code>        | Create a production build                                              |
+| <code>pnpm start</code>        | Serve the production build                                             |
+| <code>pnpm format:check</code> | Check Prettier formatting                                              |
+| <code>pnpm lint</code>         | Run ESLint with zero warnings allowed                                  |
+| <code>pnpm typecheck</code>    | Run TypeScript without emitting files                                  |
+| <code>pnpm test</code>         | Run Vitest unit/component tests                                        |
+| <code>pnpm test:e2e</code>     | Run Playwright E2E, accessibility, responsive, and cross-browser tests |
+| <code>pnpm test:e2e:ui</code>  | Open Playwright UI mode                                                |
 
 To exercise the browser suite against an existing deployment rather than a local server:
 
-~~~bash
+```bash
 PLAYWRIGHT_TEST_BASE_URL=https://bytespace-seven-neon.vercel.app pnpm test:e2e
-~~~
+```
 
 ---
 
@@ -278,18 +278,18 @@ PLAYWRIGHT_TEST_BASE_URL=https://bytespace-seven-neon.vercel.app pnpm test:e2e
 
 The release gate is intentionally broader than a happy-path browser check.
 
-| Area | Release coverage |
-| --- | --- |
-| Unit/component | 23 test files, 50 tests |
-| Playwright | 34 tests |
-| Chromium responsive matrix | 1440 / 1280 / 1024 / 768 / 390 / 320 |
-| Zoom stress | 720 CSS-pixel equivalent for 200% zoom |
-| Cross-browser | Chromium, Firefox, WebKit |
-| Accessibility | axe A/AA-oriented scans + keyboard/focus checks |
-| Runtime safety | console/network failure collection |
-| Navigation | direct routes, refreshes, links, browser history |
-| Layout | horizontal-overflow checks and narrow viewport stress |
-| Production build | required before browser gate |
+| Area                       | Release coverage                                      |
+| -------------------------- | ----------------------------------------------------- |
+| Unit/component             | 23 test files, 50 tests                               |
+| Playwright                 | 34 tests                                              |
+| Chromium responsive matrix | 1440 / 1280 / 1024 / 768 / 390 / 320                  |
+| Zoom stress                | 720 CSS-pixel equivalent for 200% zoom                |
+| Cross-browser              | Chromium, Firefox, WebKit                             |
+| Accessibility              | axe A/AA-oriented scans + keyboard/focus checks       |
+| Runtime safety             | console/network failure collection                    |
+| Navigation                 | direct routes, refreshes, links, browser history      |
+| Layout                     | horizontal-overflow checks and narrow viewport stress |
+| Production build           | required before browser gate                          |
 
 The final feature-branch quality gate and pull-request gate both completed successfully before the implementation was merged into <code>main</code>.
 

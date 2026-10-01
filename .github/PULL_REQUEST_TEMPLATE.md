@@ -4,12 +4,12 @@ Describe the problem and the change.
 
 ## What changed
 
-- 
-- 
+-
+-
 
 ## Routes / surfaces affected
 
-- 
+-
 
 ## Validation
 

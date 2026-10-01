@@ -9,15 +9,15 @@ Thanks for helping improve ByteSpace. The repository is intentionally held to th
 
 Install dependencies with:
 
-~~~bash
+```bash
 pnpm install --frozen-lockfile
-~~~
+```
 
 Start the development server with:
 
-~~~bash
+```bash
 pnpm dev
-~~~
+```
 
 ## Branch workflow
 
@@ -34,14 +34,14 @@ Keep unrelated refactors out of feature/fix pull requests whenever possible.
 
 Before requesting review, run:
 
-~~~bash
+```bash
 pnpm format:check
 pnpm lint
 pnpm typecheck
 pnpm test
 pnpm build
 pnpm test:e2e
-~~~
+```
 
 A pull request should not be considered ready while any required check is failing.
 
