@@ -460,6 +460,25 @@
   color: var(--bs-white);
 }
 
+@media (max-width: 1279px) {
+  .bs-footer__main {
+    grid-template-columns: minmax(0, 1fr);
+    gap: 48px;
+  }
+
+  .bs-footer__newsletter-column {
+    max-width: 528px;
+  }
+
+  .bs-footer__navigation {
+    grid-template-columns: minmax(0, 374px) minmax(0, 1fr);
+  }
+
+  .bs-footer__bottom {
+    margin-top: 80px;
+  }
+}
+
 @media (max-width: 767px) {
   .bs-site-header {
     height: auto;

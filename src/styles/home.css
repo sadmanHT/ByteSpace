@@ -794,7 +794,7 @@
   font-size: 18px;
 }
 
-@media (max-width: 1279px) {
+@media (max-width: 1280px) {
   .bs-home-course-grid {
     grid-template-columns: repeat(2, minmax(0, 373px));
     justify-content: center;
