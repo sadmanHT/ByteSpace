@@ -56,7 +56,7 @@ jobs:
         run: pnpm build
 
       - name: Install Playwright browsers
-        run: pnpm exec playwright install --with-deps chromium firefox webkit
+        run: pnpm exec playwright install chromium firefox webkit
 
       - name: End-to-end, accessibility, responsive, and cross-browser tests
         run: pnpm test:e2e
