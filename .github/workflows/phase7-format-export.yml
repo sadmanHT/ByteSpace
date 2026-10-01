@@ -1,0 +1,50 @@
+name: Phase 7 Format Export
+
+on:
+  push:
+    branches:
+      - feature/bytespace-new
+
+permissions:
+  contents: write
+
+jobs:
+  format:
+    if: github.actor != 'github-actions[bot]'
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v6
+        with:
+          ref: feature/bytespace-new
+
+      - name: Set up pnpm
+        uses: pnpm/action-setup@v6.0.9
+        with:
+          version: 12.7.0
+          run_install: false
+
+      - name: Set up Node.js
+        uses: actions/setup-node@v7
+        with:
+          node-version: 22
+          cache: pnpm
+          cache-dependency-path: pnpm-lock.yaml
+
+      - name: Install dependencies
+        run: pnpm install --frozen-lockfile
+
+      - name: Format Phase 7 files
+        run: pnpm exec prettier --write src/components/creator/creator-profile.tsx src/components/discovery/search-experience.tsx tests/e2e/phase7-discovery.spec.ts
+
+      - name: Commit formatting
+        run: |
+          if git diff --quiet; then
+            echo "No formatting changes required."
+            exit 0
+          fi
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add src/components/creator/creator-profile.tsx src/components/discovery/search-experience.tsx tests/e2e/phase7-discovery.spec.ts
+          git commit -m "style: format phase 7 discovery files"
+          git push origin HEAD:feature/bytespace-new
