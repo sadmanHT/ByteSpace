@@ -1,19 +1,23 @@
-# Phase 9 — Responsive, Accessibility, Performance, Cross-Browser QA Audit
+# Phase 9 — Responsive, Accessibility, Performance, and Cross-Browser Audit
 
-## Status
+## Scope and design authority
 
-Phase 9 implementation and QA hardening are complete in code. Final closure remains gated on a successful permanent **Quality Gate** run for the latest branch head.
-
-## Source of truth
-
+- Branch: `feature/bytespace-new`
+- Phase 9 implementation gate HEAD: `10c9e20d8fad6e675eda6eb10e5b818e4805617f`
 - Native design package: `ByteSpace New Check website (Copy).fig`
-- Recorded SHA-256: `a5c21e6873e4a024db448e30ad30703edc797a49bf4e1da4eaa2cc2dc8a97089`
-- Desktop reference viewport: 1440px
-- Design inspection continued from the native local `.fig` workflow; Figma MCP was not used.
+- Recorded native package SHA-256: `a5c21e6873e4a024db448e30ad30703edc797a49bf4e1da4eaa2cc2dc8a97089`
+- Design inspection remained local/native. Figma MCP was not used for Phase 9 design decisions.
+- Desktop Figma geometry remained authoritative. Responsive behavior below the supplied desktop frames is intentionally inferred to preserve hierarchy, readability, reachable controls, and zero accidental horizontal scrolling.
 
-## Responsive matrix
+## Baseline
 
-The permanent Playwright QA suite now exercises the major route matrix at:
+Phase 9 started after the Phase 8 course-detail ecosystem was green. The Phase 8 gate covered the About, Lessons, and Reviews routes, shared course shell, route-backed navigation, share fallback, review filtering, static progress, accessibility, and narrow-view behavior.
+
+Phase 9 did not re-plan or rebuild completed screens. It hardened the complete route set.
+
+## Route and viewport matrix
+
+The Phase 9 Chromium matrix covers all major routes at:
 
 - 1440px
 - 1280px
@@ -22,129 +26,162 @@ The permanent Playwright QA suite now exercises the major route matrix at:
 - 390px
 - 320px
 
-Routes covered:
+Routes:
 
-- Home
-- Register
-- Login
-- Search/Courses
-- Course Details
-- Course Lessons
-- Course Reviews
-- Creator Profile
-- 404
+- Home — `/`
+- Register — `/register`
+- Login — `/login`
+- Search/Courses — `/courses`
+- Course Details — `/courses/build-digital-asset`
+- Course Lessons — `/courses/build-digital-asset/lessons`
+- Course Reviews — `/courses/build-digital-asset/reviews`
+- Creator Profile — `/creators/purepearl-studio`
+- 404 — `/404`
 
-The matrix checks:
+For the full Chromium matrix the suite checks direct load, visible main landmark, horizontal overflow, route title at 1440px, refresh at 320px, keyboard reachability, and axe WCAG A/AA scanning.
 
-- direct route load,
-- required `main` landmark,
-- horizontal overflow,
-- refresh at the narrowest viewport,
-- keyboard reachability,
-- axe WCAG A/AA scans,
-- route-specific document titles,
-- console/page errors,
-- failed network responses,
-- route-backed internal navigation,
-- and a 720 CSS-pixel stress viewport representing the layout pressure of 200% browser zoom.
+A separate 720 CSS-pixel viewport pass exercises the layout at the practical CSS-pixel equivalent of a 1440px desktop viewed at 200% zoom.
 
 ## Cross-browser coverage
 
-`playwright.config.ts` now keeps the existing pixel-sensitive suite on Chromium and adds focused Phase 9 smoke projects for:
+Focused route smoke runs in:
 
-- Chromium,
-- Firefox,
-- WebKit.
+- Chromium
+- Firefox
+- WebKit
 
-The cross-browser smoke covers all major routes at 1280px and 390px and also exercises the course Share interaction so Web Share/clipboard differences degrade safely.
+The cross-browser pass covers every major route at 1280px and 390px and verifies:
 
-## Responsive defects found and corrected
+- successful route rendering,
+- no accidental horizontal scrolling,
+- failed HTTP responses,
+- page errors,
+- unexpected console errors,
+- the course Share interaction.
 
-Phase 9 deliberately used the expanded matrix to find real defects instead of hiding overflow globally.
+The CI environment is pinned to the official Playwright `v1.63.0-noble` container so browser binaries and Linux dependencies are reproducible instead of depending on mutable runner packages.
 
-Corrections include:
+### Firefox interrupted-image console behavior
 
-1. Home switches its tablet editorial/grid treatment at the 1280px boundary so fixed desktop geometry does not leak beyond the viewport.
-2. The shared footer collapses its desktop column shell at tablet widths instead of retaining min-content widths that exceeded Courses/Creator layouts.
-3. Rotated Home decorative shapes are moved inward at responsive breakpoints because their transformed bounding boxes can exceed their untransformed CSS boxes.
-4. The Home course-editorial composition receives a narrower 320px scale without changing the 1440px reference layout.
-5. The creator CTA decorative shape is contained on mobile for Firefox/WebKit, where transformed geometry produced a larger scroll width than Chromium.
-6. The explicit and framework 404 experience now uses a semantic `main` landmark and a consistent page title.
+The rapid route-navigation smoke can cause Firefox to emit `Image corrupt or truncated.` when an in-flight image request is interrupted by navigation. The underlying asset files are valid and the network failure collector remains active.
 
-No `overflow-x: hidden` band-aid was added to conceal layout defects.
+The test ignores only that exact Firefox-specific decoder warning. It does not suppress:
+
+- failed HTTP responses,
+- missing assets,
+- page errors,
+- Chromium/WebKit console errors,
+- other Firefox console errors.
+
+## Responsive corrections made in Phase 9
+
+Evidence-backed changes included:
+
+- moved Home into its tablet composition at the 1280px boundary rather than one pixel below it,
+- made the shared footer collapse out of its fixed desktop column shell at tablet widths,
+- constrained Home partner/layout compositions below 1024px,
+- moved narrow Home decorative shapes inward where transformed bounds created scrollable overflow,
+- contained narrow Home editorial decoration overflow without clipping the full page,
+- constrained course-card copy with a `minmax(0, 1fr)` grid column so long creator text cannot force Firefox/WebKit horizontal overflow,
+- preserved course sidebars as stacked content on narrow screens,
+- retained existing responsive auth, discovery, course-detail, and footer behavior.
+
+The final cross-browser overflow investigation identified the real 390px Firefox offender as the course-card creator copy, not the intentionally clipped hero decorations.
 
 ## Accessibility review
 
-The Phase 9 gate verifies:
+Automated and behavioral coverage includes:
 
-- semantic landmarks,
-- page titles,
-- keyboard focus movement,
-- existing form labels/error status semantics,
-- existing rating/progress/pagination semantics,
-- route navigation semantics,
-- and automated axe WCAG A/AA checks at the narrowest required viewport.
+- semantic main landmarks,
+- route-specific document titles,
+- custom 404 landmark/title,
+- named navigation regions,
+- persistent form labels,
+- accessible validation/error associations,
+- keyboard-reachable interactive controls,
+- focus behavior,
+- pagination current-state semantics,
+- rating semantics,
+- `aria-pressed` state for local-only controls,
+- progress element semantics,
+- accessible Share/enrollment/video-preview feedback,
+- axe WCAG A/AA scans.
 
-Earlier route-specific tests continue to cover auth validation, local Follow state, course navigation, Share feedback, review filters, and narrow layouts.
+Existing route-specific suites continue to cover auth validation, search/filter/pagination, creator follow state, course route navigation, review filters, share fallback, and narrow overflow.
 
-## Performance and Next.js review
+## Performance and Next.js boundary review
 
-Production build succeeds under Next.js 16.3.6.
+The production build completes successfully and reports 19 generated application pages/routes, with static and SSG output retained where the route model permits it.
 
 Review findings:
 
-- Route files remain server components unless interaction requires a client boundary.
-- Client behavior stays isolated to components such as auth forms, search/filter controls, Follow state, Share/enrollment feedback, and review filtering.
-- Static/SSG routes remain prerenderable where their data permits it.
-- The public asset set uses localized WebP imagery and does not contain duplicate blob payloads in the audited asset tree.
-- High-value images use explicit dimensions or Next Image sizing, reducing layout-shift risk.
-- Existing web-font CSS imports are retained for Figma typography fidelity.
-- No backend/payment/auth persistence was introduced as part of QA hardening.
+- static/page composition remains server-rendered by default,
+- client components remain isolated to interactions such as forms, filters, follow state, sharing, category selection, and review filtering,
+- whole route trees were not converted into client components for isolated interactions,
+- localized Figma imagery remains WebP,
+- the public asset set was reviewed for duplicate blobs,
+- `next/image` keeps explicit dimensions or constrained fill containers for high-value imagery,
+- no fake auth, payment, persistence, or video backend was added for performance convenience.
 
-## CI changes
+The design's external web-font loading remains intentional for typography fidelity.
 
-The permanent Quality Gate now installs Chromium, Firefox, and WebKit and runs the combined:
+## Visual regression evidence
 
-- formatting,
-- lint,
-- strict TypeScript,
-- unit/component tests,
-- production build,
-- E2E,
-- accessibility,
-- responsive,
-- and cross-browser suite.
+The successful Playwright report retains 1440px full-page captures for all major routes.
 
-The Playwright HTML report remains retained for seven days on every run.
+Reference geometry observed in the final report:
 
-## Visual verification
+- Home: 1440 × 6377
+- Register: 1440 × 1024
+- Login: 1440 × 1024
+- Search/Courses: 1440 × 3853
+- Course Details: 1440 × 2717
+- Course Lessons: 1440 × 2883
+- Course Reviews: 1440 × 3449
+- Creator Profile: 1440 × 2136
+- 404: 1440 × 1485
 
-The Phase 9 Chromium matrix attaches full-page 1440px screenshots for all nine major routes. These captures preserve the existing native-Figma desktop implementations while responsive changes are restricted to smaller breakpoints.
+Responsive changes are scoped below the 1440px Figma reference. Desktop structure, card sizing, course sidebar geometry, hero hierarchy, and footer placement remain aligned with the native frames established in prior phase audits.
 
-Phase-specific visual geometry tests from earlier phases remain in the permanent suite, including the Home, shared-shell, Search/Creator, auth/404, catalogue/card, and course-detail desktop checks.
+## Final Phase 9 quality gate
 
-## Deliberate behavior boundaries retained
+GitHub Actions Quality Gate:
 
-- Authentication remains frontend validation only.
-- Enrollment remains an honest frontend boundary; no checkout/payment success is fabricated.
-- Follow remains local state.
-- Learning progress remains fixture/display data.
-- Share uses real browser capability with a clipboard fallback.
-- No unsupported video playback is invented.
-- Search/filter/sort/pagination remain deterministic fixture-backed frontend behavior.
+- Run ID: `36888357881`
+- HEAD: `10c9e20d8fad6e675eda6eb10e5b818e4805617f`
+- Result: success
+- Playwright report artifact: `11175312338`
+- Artifact digest: `sha256:49969c9cfed842be885ed01859c9cd18a624e34cec87dd61548474629e33eabe`
 
-## Final exit gate
+Passing totals:
 
-Phase 9 is not considered closed until the latest branch head has one successful permanent Quality Gate run with:
+- 23 test files
+- 50 unit/component tests
+- 34 Playwright tests
 
-- formatting green,
-- lint green,
-- typecheck green,
-- all unit/component tests green,
-- production build green,
-- all Chromium route/responsive/a11y tests green,
-- Firefox smoke green,
-- WebKit smoke green,
-- and Playwright report upload successful.
+Passing gate steps:
 
-Phase 10 must not start before that condition is met.
+- frozen dependency install
+- formatting
+- ESLint
+- strict TypeScript
+- unit/component tests
+- production build
+- responsive/accessibility/cross-browser Playwright suite
+- Playwright report upload
+
+## Phase 9 exit status
+
+Phase 9 acceptance criteria are met:
+
+- every major route is covered from 320px through desktop,
+- desktop Figma geometry remains protected,
+- accidental horizontal scrolling is blocked by tests,
+- axe and keyboard checks pass,
+- Chromium/Firefox/WebKit smoke passes,
+- production build/performance boundaries were reviewed,
+- server/client boundaries were reviewed,
+- desktop visual evidence exists for every major route,
+- the complete gate is green.
+
+Phase 10 may begin from this clean boundary.
