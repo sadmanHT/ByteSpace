@@ -44,29 +44,31 @@ test("Phase 9 cross-browser route smoke stays stable at desktop and narrow width
 
       const geometry = await page.evaluate(() => {
         const viewportWidth = window.innerWidth;
-        const offenders = Array.from(document.querySelectorAll<HTMLElement>("body *"))
-          .map((element) => {
-            const rect = element.getBoundingClientRect();
-            const className =
-              typeof element.className === "string"
-                ? element.className.trim().replace(/\\s+/g, ".")
-                : "";
-            const selector = element.id
-              ? `#${element.id}`
-              : `${element.tagName.toLowerCase()}${className ? `.${className}` : ""}`;
+        const offenders: Array<{
+          className: string;
+          left: number;
+          right: number;
+          tag: string;
+        }> = [];
 
-            return {
-              left: Math.round(rect.left),
-              right: Math.round(rect.right),
-              selector,
-              width: Math.round(rect.width),
-            };
-          })
-          .filter(
-            ({ left, right, width }) =>
-              width > 0 && (left < 0 || right > viewportWidth),
-          )
-          .slice(0, 6);
+        for (const element of document.querySelectorAll<HTMLElement>("body *")) {
+          const rect = element.getBoundingClientRect();
+          const crossesViewport = rect.left < 0 || rect.right > viewportWidth;
+
+          if (rect.width <= 0 || !crossesViewport) continue;
+
+          let className = "";
+          if (typeof element.className === "string") className = element.className;
+
+          offenders.push({
+            className,
+            left: Math.round(rect.left),
+            right: Math.round(rect.right),
+            tag: element.tagName.toLowerCase(),
+          });
+
+          if (offenders.length === 6) break;
+        }
 
         return {
           documentWidth: document.documentElement.scrollWidth,
