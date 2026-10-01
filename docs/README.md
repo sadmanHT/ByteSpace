@@ -20,11 +20,11 @@ The documentation in this directory records design provenance, implementation de
 
 ## Native design evidence
 
-The supplied native Figma package is the design source of truth.
+The assessment Figma design is the visual source of truth; the supplied native working-copy package is retained as the implementation evidence source.
 
 - Package: <code>ByteSpace New Check website (Copy).fig</code>
 - SHA-256: <code>a5c21e6873e4a024db448e30ad30703edc797a49bf4e1da4eaa2cc2dc8a97089</code>
-- Figma design: https://www.figma.com/design/kfFdZSGAGn4TFvnKHK4qem/ByteSpace-New-Check-website--Copy-?node-id=0-1&p=f&t=gmF3WiJQh49Q4LGu-0
+- Figma design: https://www.figma.com/design/26TBgRjmpuxudcErJsHUfy/ByteSpace-New-Check-website?node-id=0-1&p=f&t=eQOrqJmq6rMG5b6L-0
 
 Generated native-source records such as <code>figma-assets.json</code> and <code>figma-source-audit.json</code> are retained so visual decisions remain traceable.
 

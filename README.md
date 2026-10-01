@@ -15,7 +15,7 @@ Pixel-conscious UI • Accessible interactions • Typed domain architecture •
 
 **[Live Production](https://bytespace-seven-neon.vercel.app)** ·
 **[Product Walkthrough](docs/WALKTHROUGH.md)** ·
-**[Figma Source](https://www.figma.com/design/kfFdZSGAGn4TFvnKHK4qem/ByteSpace-New-Check-website--Copy-?node-id=0-1&p=f&t=gmF3WiJQh49Q4LGu-0)** ·
+**[Figma Source](https://www.figma.com/design/26TBgRjmpuxudcErJsHUfy/ByteSpace-New-Check-website?node-id=0-1&p=f&t=eQOrqJmq6rMG5b6L-0)** ·
 **[Engineering Evidence](docs/README.md)**
 
 </div>
@@ -307,11 +307,11 @@ Where the supplied Figma source contained a genuine contrast issue, the implemen
 
 ## Design fidelity
 
-The visual source of truth is the supplied ByteSpace Figma design:
+The assessment design is the visual source of truth:
 
-**[ByteSpace New Check website — Figma](https://www.figma.com/design/kfFdZSGAGn4TFvnKHK4qem/ByteSpace-New-Check-website--Copy-?node-id=0-1&p=f&t=gmF3WiJQh49Q4LGu-0)**
+**[ByteSpace New Check website — Figma](https://www.figma.com/design/26TBgRjmpuxudcErJsHUfy/ByteSpace-New-Check-website?node-id=0-1&p=f&t=eQOrqJmq6rMG5b6L-0)**
 
-Implementation and visual verification were based on the native local package <code>ByteSpace New Check website (Copy).fig</code>.
+Implementation and visual verification were performed from the supplied native working-copy package <code>ByteSpace New Check website (Copy).fig</code>, preserving an auditable local source while the reviewer-facing link above points to the assessment design.
 
 Native package SHA-256:
 
