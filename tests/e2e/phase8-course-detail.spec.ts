@@ -65,7 +65,7 @@ test("Phase 8 course routes preserve the native desktop frame geometry and route
     contentType: "image/png",
   });
 
-  await page.getByRole("link", { name: "About" }).click();
+  await page\n    .getByRole("navigation", { name: "Course sections" })\n    .getByRole("link", { name: "About" })\n    .click();
   await expect(page).toHaveURL(/\/courses\/build-digital-asset$/);
 
   await page.getByRole("link", { name: "See Full Profile" }).click();
